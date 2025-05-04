@@ -1,5 +1,6 @@
 "use client";
 
+import { useMutation } from '@tanstack/react-query';
 import GoogleButton from 'apps/user-ui/src/shared/widgets/header/components/google-button';
 import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
@@ -7,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios, { AxiosError } from 'axios';
 
 type FormData = {
   name: string
@@ -17,8 +19,7 @@ type FormData = {
 const Signup = () => {
 
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const [serverError, setServerError] = useState<string | null>(null);
-  const [showOtp, setShowOtp] = useState(true);
+  const [showOtp, setShowOtp] = useState(false);
   const [canResend, setCanResend] = useState(true);
   const [timer, setTimer] = useState(60);
   const [otp, setOtp] = useState(["", "", "", ""]);
@@ -33,8 +34,55 @@ const Signup = () => {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
+  const startResendTimer = () => {
+    const interval = setInterval(() => {
+      setTimer((prev)=>{
+        if(prev <= 1){
+          clearInterval(interval);
+          setCanResend(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
+  const signupMutation=useMutation({
+    mutationFn:async (data: FormData) => {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/user-registration`
+        , data);
+      return response.data;
+    },
+    onSuccess: (_,formData)=>{
+      setUserData(formData);
+      setShowOtp(true);
+      setCanResend(false);
+      setTimer(60);
+      startResendTimer();
+
+    },
+  });
+
+  const verifyOtpMutation=useMutation({
+    mutationFn:async()=>{
+      if(!userData) return;
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/verify-user`
+        , {
+          ...userData,
+          otp: otp.join(""),
+        }
+      );
+      return response.data;
+    },
+    onSuccess:()=>{
+      router.push("/login");
+    },
+  });
+
+  const onSubmit = (data: FormData) => {
+    signupMutation.mutate(data);
   };
 
   const handleOtpChange = (index: number, value: string) => {
@@ -56,7 +104,9 @@ const Signup = () => {
   };
 
   const resendOtp = () => {
-
+    if(userData){
+      signupMutation.mutate(userData);
+    }
   };
 
   return (
@@ -106,8 +156,8 @@ const Signup = () => {
                 required: "Ім'я є обов'язковим",
               })}
             />
-            {errors.email && (
-              <p className='text-red-500 text-sm mb-2'>{String(errors.email.message)}</p>
+            {errors.name && (
+              <p className='text-red-500 text-sm mb-2'>{String(errors.name.message)}</p>
             )}
 
             <label className='block text-gray-700 mb-1'>Email</label>
@@ -151,12 +201,10 @@ const Signup = () => {
 
             <button
               type='submit'
+              disabled={signupMutation.isPending}
               className='w-full text-lg mt-4 cursor-pointer bg-black text-white py-2 rounded-lg'>
-              Зареєструватися
+              {signupMutation.isPending ? "Реєстрація...":"Зареєструватися"}
             </button>
-            {serverError && (
-              <p className='text-red-500 text-sm mb-2'>{String(serverError)}</p>
-            )}
           </form>) : (
             <div>
               <h3 className='text-xl font-semibold text-center mb-4'>Введіть OTP-код для підтвердження</h3>
@@ -176,8 +224,12 @@ const Signup = () => {
                  />
                 ))}
               </div>
-              <button className='w-full mt-4 text-lg cursor-pointer bg-blue-500 text-white py-2 rounded-lg'>
-                Підтвердити код
+              <button 
+              className='w-full mt-4 text-lg cursor-pointer bg-blue-500 text-white py-2 rounded-lg'
+              disabled={verifyOtpMutation.isPending}
+              onClick={()=>verifyOtpMutation.mutate()}
+              >
+                {verifyOtpMutation.isPending ? "Перевірка...":"Підтвердити код"}
               </button>
               <p className='text-sm mt-4 text-center'>
                 {canResend ? (
@@ -191,6 +243,14 @@ const Signup = () => {
                   `Повторна відправка коду через ${timer} секунд`
                 )}
               </p>
+              {
+                verifyOtpMutation?.isError && 
+                verifyOtpMutation.error instanceof AxiosError && (
+                  <p className='text-red-500 text-sm mt-2'>
+                    {verifyOtpMutation.error?.response?.data?.message || "Помилка при перевірці коду"}
+                  </p>
+                )
+              }
 
             </div>
           )}
