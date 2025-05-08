@@ -98,6 +98,26 @@
         }
       }
     },
+    "/refresh-token-user": {
+      "post": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/logged-in-user": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/forgot-password-user": {
       "post": {
         "description": "",
