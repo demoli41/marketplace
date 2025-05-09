@@ -9,17 +9,19 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios, { AxiosError } from 'axios';
 import { countries } from 'apps/seller-ui/src/utils/countries';
+import CreateShop from 'apps/seller-ui/src/shared/modules/auth/create-shop';
 
 
 const Signup = () => {
 
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(3);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [showOtp, setShowOtp] = useState(false);
   const [canResend, setCanResend] = useState(true);
   const [timer, setTimer] = useState(60);
   const [otp, setOtp] = useState(["", "", "", ""]);
-  const [userData, setUserData] = useState<FormData | null>(null);
+  const [sellerData, setSellerData] = useState<FormData | null>(null);
+  const [sellerId, setSellerId] = useState("");
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const router = useRouter();
@@ -46,12 +48,12 @@ const Signup = () => {
   const signupMutation = useMutation({
     mutationFn: async (data: FormData) => {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/user-registration`
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/seller-registration`
         , data);
       return response.data;
     },
     onSuccess: (_, formData) => {
-      setUserData(formData);
+      setSellerData(formData);
       setShowOtp(true);
       setCanResend(false);
       setTimer(60);
@@ -62,18 +64,19 @@ const Signup = () => {
 
   const verifyOtpMutation = useMutation({
     mutationFn: async () => {
-      if (!userData) return;
+      if (!sellerData) return;
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/verify-user`
+        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/verify-seller`
         , {
-          ...userData,
+          ...sellerData,
           otp: otp.join(""),
         }
       );
       return response.data;
     },
-    onSuccess: () => {
-      router.push("/login");
+    onSuccess: (data) => {
+      setSellerId(data?.seller?.id);
+      setActiveStep(2);
     },
   });
 
@@ -100,10 +103,15 @@ const Signup = () => {
   };
 
   const resendOtp = () => {
-    if (userData) {
-      signupMutation.mutate(userData);
+    if (sellerData) {
+      signupMutation.mutate(sellerData);
     }
   };
+
+  const connectStripe = () => {
+    
+  };
+
 
   return (
     <div className="w-full flex flex-col items-center pt-10 min-h-screen">
@@ -186,9 +194,8 @@ const Signup = () => {
               <select
                 className='w-full p-2 border border-gray-300 outline-0 rounded-[4px] mb-1'
                 {...register("country", {
-                  required: "Країна є обов'язковою",
-                })}
-                name="" id="">
+                  required: "Країна є обов'язковою"
+                })}>
                 <option value="">Виберіть свою країну</option>
                 {countries.map((country) => (
                   <option key={country.code} value={country.code}>{country.name}
@@ -293,6 +300,20 @@ const Signup = () => {
               </div>
             )}
           </>
+        )}
+        {activeStep === 2 && (
+          <CreateShop sellerId={sellerId} setActiveStep={setActiveStep}/>
+        )}
+        {activeStep===3&&(
+          <div className='text-center'>
+            <h3 className='text-2xl font-semibold'>Метод виведення коштів</h3>
+            <br />
+            <button 
+            onClick={connectStripe}
+            className='w-full m-auto flex items-center justify-center gap-3 text-lg bg-[#334155] text-white py-2 rounded-lg'>
+              Підключити Stripe
+            </button>
+          </div>
         )}
       </div>
     </div>
