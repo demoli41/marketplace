@@ -5543,8 +5543,6 @@ export namespace Prisma {
     stripeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    shopId: string | null
-    shopsId: string | null
   }
 
   export type SellersMaxAggregateOutputType = {
@@ -5557,8 +5555,6 @@ export namespace Prisma {
     stripeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
-    shopId: string | null
-    shopsId: string | null
   }
 
   export type SellersCountAggregateOutputType = {
@@ -5571,8 +5567,6 @@ export namespace Prisma {
     stripeId: number
     createdAt: number
     updatedAt: number
-    shopId: number
-    shopsId: number
     _all: number
   }
 
@@ -5587,8 +5581,6 @@ export namespace Prisma {
     stripeId?: true
     createdAt?: true
     updatedAt?: true
-    shopId?: true
-    shopsId?: true
   }
 
   export type SellersMaxAggregateInputType = {
@@ -5601,8 +5593,6 @@ export namespace Prisma {
     stripeId?: true
     createdAt?: true
     updatedAt?: true
-    shopId?: true
-    shopsId?: true
   }
 
   export type SellersCountAggregateInputType = {
@@ -5615,8 +5605,6 @@ export namespace Prisma {
     stripeId?: true
     createdAt?: true
     updatedAt?: true
-    shopId?: true
-    shopsId?: true
     _all?: true
   }
 
@@ -5702,8 +5690,6 @@ export namespace Prisma {
     stripeId: string | null
     createdAt: Date
     updatedAt: Date
-    shopId: string | null
-    shopsId: string | null
     _count: SellersCountAggregateOutputType | null
     _min: SellersMinAggregateOutputType | null
     _max: SellersMaxAggregateOutputType | null
@@ -5733,8 +5719,6 @@ export namespace Prisma {
     stripeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    shopId?: boolean
-    shopsId?: boolean
     shop?: boolean | sellers$shopArgs<ExtArgs>
   }, ExtArgs["result"]["sellers"]>
 
@@ -5750,11 +5734,9 @@ export namespace Prisma {
     stripeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    shopId?: boolean
-    shopsId?: boolean
   }
 
-  export type sellersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone_number" | "country" | "password" | "stripeId" | "createdAt" | "updatedAt" | "shopId" | "shopsId", ExtArgs["result"]["sellers"]>
+  export type sellersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone_number" | "country" | "password" | "stripeId" | "createdAt" | "updatedAt", ExtArgs["result"]["sellers"]>
   export type sellersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     shop?: boolean | sellers$shopArgs<ExtArgs>
   }
@@ -5774,8 +5756,6 @@ export namespace Prisma {
       stripeId: string | null
       createdAt: Date
       updatedAt: Date
-      shopId: string | null
-      shopsId: string | null
     }, ExtArgs["result"]["sellers"]>
     composites: {}
   }
@@ -6178,8 +6158,6 @@ export namespace Prisma {
     readonly stripeId: FieldRef<"sellers", 'String'>
     readonly createdAt: FieldRef<"sellers", 'DateTime'>
     readonly updatedAt: FieldRef<"sellers", 'DateTime'>
-    readonly shopId: FieldRef<"sellers", 'String'>
-    readonly shopsId: FieldRef<"sellers", 'String'>
   }
     
 
@@ -6656,9 +6634,7 @@ export namespace Prisma {
     password: 'password',
     stripeId: 'stripeId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    shopId: 'shopId',
-    shopsId: 'shopsId'
+    updatedAt: 'updatedAt'
   };
 
   export type SellersScalarFieldEnum = (typeof SellersScalarFieldEnum)[keyof typeof SellersScalarFieldEnum]
@@ -7070,8 +7046,6 @@ export namespace Prisma {
     stripeId?: StringNullableFilter<"sellers"> | string | null
     createdAt?: DateTimeFilter<"sellers"> | Date | string
     updatedAt?: DateTimeFilter<"sellers"> | Date | string
-    shopId?: StringNullableFilter<"sellers"> | string | null
-    shopsId?: StringNullableFilter<"sellers"> | string | null
     shop?: XOR<ShopsNullableScalarRelationFilter, shopsWhereInput> | null
   }
 
@@ -7085,8 +7059,6 @@ export namespace Prisma {
     stripeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    shopId?: SortOrder
-    shopsId?: SortOrder
     shop?: shopsOrderByWithRelationInput
   }
 
@@ -7103,8 +7075,6 @@ export namespace Prisma {
     stripeId?: StringNullableFilter<"sellers"> | string | null
     createdAt?: DateTimeFilter<"sellers"> | Date | string
     updatedAt?: DateTimeFilter<"sellers"> | Date | string
-    shopId?: StringNullableFilter<"sellers"> | string | null
-    shopsId?: StringNullableFilter<"sellers"> | string | null
     shop?: XOR<ShopsNullableScalarRelationFilter, shopsWhereInput> | null
   }, "id" | "email">
 
@@ -7118,8 +7088,6 @@ export namespace Prisma {
     stripeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    shopId?: SortOrder
-    shopsId?: SortOrder
     _count?: sellersCountOrderByAggregateInput
     _max?: sellersMaxOrderByAggregateInput
     _min?: sellersMinOrderByAggregateInput
@@ -7138,8 +7106,6 @@ export namespace Prisma {
     stripeId?: StringNullableWithAggregatesFilter<"sellers"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"sellers"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"sellers"> | Date | string
-    shopId?: StringNullableWithAggregatesFilter<"sellers"> | string | null
-    shopsId?: StringNullableWithAggregatesFilter<"sellers"> | string | null
   }
 
   export type imagesCreateInput = {
@@ -7455,8 +7421,6 @@ export namespace Prisma {
     stripeId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shopId?: string | null
-    shopsId?: string | null
     shop?: shopsCreateNestedOneWithoutSellersInput
   }
 
@@ -7470,8 +7434,6 @@ export namespace Prisma {
     stripeId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shopId?: string | null
-    shopsId?: string | null
     shop?: shopsUncheckedCreateNestedOneWithoutSellersInput
   }
 
@@ -7484,8 +7446,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
     shop?: shopsUpdateOneWithoutSellersNestedInput
   }
 
@@ -7498,8 +7458,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
     shop?: shopsUncheckedUpdateOneWithoutSellersNestedInput
   }
 
@@ -7513,8 +7471,6 @@ export namespace Prisma {
     stripeId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shopId?: string | null
-    shopsId?: string | null
   }
 
   export type sellersUpdateManyMutationInput = {
@@ -7526,8 +7482,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type sellersUncheckedUpdateManyInput = {
@@ -7539,8 +7493,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -7874,8 +7826,6 @@ export namespace Prisma {
     stripeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    shopId?: SortOrder
-    shopsId?: SortOrder
   }
 
   export type sellersMaxOrderByAggregateInput = {
@@ -7888,8 +7838,6 @@ export namespace Prisma {
     stripeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    shopId?: SortOrder
-    shopsId?: SortOrder
   }
 
   export type sellersMinOrderByAggregateInput = {
@@ -7902,8 +7850,6 @@ export namespace Prisma {
     stripeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    shopId?: SortOrder
-    shopsId?: SortOrder
   }
 
   export type usersCreateNestedOneWithoutAvatarInput = {
@@ -8774,8 +8720,6 @@ export namespace Prisma {
     stripeId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shopId?: string | null
-    shopsId?: string | null
   }
 
   export type sellersUncheckedCreateWithoutShopInput = {
@@ -8788,8 +8732,6 @@ export namespace Prisma {
     stripeId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    shopId?: string | null
-    shopsId?: string | null
   }
 
   export type sellersCreateOrConnectWithoutShopInput = {
@@ -8856,8 +8798,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type sellersUncheckedUpdateWithoutShopInput = {
@@ -8869,8 +8809,6 @@ export namespace Prisma {
     stripeId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    shopId?: NullableStringFieldUpdateOperationsInput | string | null
-    shopsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type shopsCreateWithoutSellersInput = {

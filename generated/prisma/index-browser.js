@@ -163,9 +163,7 @@ exports.Prisma.SellersScalarFieldEnum = {
   password: 'password',
   stripeId: 'stripeId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  shopId: 'shopId',
-  shopsId: 'shopsId'
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
