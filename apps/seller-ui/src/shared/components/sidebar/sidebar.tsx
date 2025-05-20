@@ -8,7 +8,7 @@ import Box from '../box';
 import { Sidebar } from './sidebar.styles';
 import Link from 'next/link';
 import SidebarItem from './sidebar.item';
-import { BellPlus, BellRing, CalendarPlus, Home, ListOrdered, LogOut, LogsIcon, Mail, PackageSearch, Settings, SquarePlus, Store, TicketPercent, Wallet2Icon } from 'lucide-react';
+import { BellPlus, BellRing, CalendarPlus, ListOrdered, LogOut, LogsIcon, Mail, PackageSearch, Settings, SquarePlus, Store, TicketPercent, Wallet2Icon } from 'lucide-react';
 import SidebarMenu from './sidebar.menu';
 
 
