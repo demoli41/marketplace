@@ -1,14 +1,19 @@
 'use client';
+import { useQuery } from '@tanstack/react-query';
 import ImagePlaceholder from 'apps/seller-ui/src/shared/components/image-placeholder';
+import axiosInstance from 'apps/seller-ui/src/utils/axiosInstance';
+
 
 import { ChevronRight } from 'lucide-react';
 import ColorSelector from 'packages/components/color-selector';
 import CustomProperties from 'packages/components/custom-properties';
 import CustomSpecifications from 'packages/components/custom-specifications';
 import Input from 'packages/components/input/input';
+import RichTextEditor from 'packages/components/rich-text-editor/rich-text-editor';
+import SizeSelector from 'packages/components/size-selector/size-selector';
 
-import React, { useState } from 'react'
-import { set, useForm } from 'react-hook-form';
+import React, { useMemo, useState } from 'react'
+import { Controller, set, useForm } from 'react-hook-form';
 
 const Page = () => {
 
@@ -21,9 +26,35 @@ const Page = () => {
     } = useForm();
 
     const [openImageModel, setOpenImageModel] = useState(false);
-    const [isChanged, setIsChanged] = useState(false);
+    const [isChanged, setIsChanged] = useState(true);
     const [images, setImages] = useState<(File | null)[]>([null]);
     const [loading, setLoading] = useState(false);
+
+    const { data, isLoading, isError } = useQuery({
+        queryKey: ["categories"],
+        queryFn: async () => {
+            try {
+                const res = await axiosInstance.get("/product/api/get-categories");
+                return res.data;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        staleTime: 1000 * 60 * 5,
+        retry: 2,
+    });
+
+    const categories = data?.categories || [];
+    const subCategoriesData = data?.subCategories || [];
+
+    const selectedCategory = watch("category");
+    const regularPrice = watch("regular_price");
+
+    const subcategories = useMemo(() => {
+        return selectedCategory ? subCategoriesData[selectedCategory] || [] : [];
+    }, [selectedCategory, subCategoriesData]);
+
+    console.log(categories, subCategoriesData);
 
 
     const onSubmit = (data: any) => {
@@ -60,6 +91,10 @@ const Page = () => {
         });
 
         setValue("images", images);
+    };
+
+    const handleSaveDraft = () => {
+
     };
 
     return (
@@ -129,7 +164,7 @@ const Page = () => {
                                     type='textarea'
                                     rows={7}
                                     cols={10}
-                                    label='Опис товару * (Максимум 150 слів)'
+                                    label='Короткий опис товару * (Максимум 150 слів)'
                                     placeholder='Введіть опис товару'
                                     {...register('description', {
                                         required: "Це поле обов'язкове",
@@ -260,9 +295,223 @@ const Page = () => {
 
                         <div className='w-2/4'>
                             <label className='block font-semibold text-gray-300 mb-1'>Категорія *</label>
+                            {
+                                isLoading ? (
+                                    <p className='text-gray-400'>Завантаження категорій...</p>
+                                ) : isError ? (
+                                    <p className='text-red-500 '>
+                                        Помилка завантаження категорій
+                                    </p>
+                                ) : (
+                                    <Controller
+                                        name='category'
+                                        control={control}
+                                        rules={{ required: "Категорія обов'язкова" }}
+                                        render={({ field }) => (
+                                            <select
+                                                {...field}
+                                                className='w-full border outline-none border-gray-700 bg-transparent rounded-md p-2 text-gray-400'
+                                            >
+                                                <option value="" className='bg-black'>Виберіть категорію</option>
+                                                {categories?.map((category: string) => (
+                                                    <option
+                                                        key={category}
+                                                        value={category}
+                                                        className='bg-black'
+                                                    >
+                                                        {category}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        )}
+                                    />
+                                )
+                            }
+                            {errors.category && (
+                                <p className='text-red-500 text-sm mt-1'>
+                                    {errors.category.message as string}
+                                </p>
+                            )}
+
+                            <div className='mt-2'>
+                                <label className='block font-semibold text-gray-300 mb-1'>Підкатегорія *</label>
+
+                                <Controller
+                                    name='subcategory'
+                                    control={control}
+                                    rules={{ required: "Підкатегорія обов'язкова" }}
+                                    render={({ field }) => (
+                                        <select
+                                            {...field}
+                                            className='w-full border outline-none border-gray-700 bg-transparent rounded-md p-2 text-gray-400'
+                                        >
+                                            <option value="" className='bg-black'>Виберіть підкатегорію</option>
+                                            {subcategories?.map((subcategory: string) => (
+                                                <option
+                                                    key={subcategory}
+                                                    value={subcategory}
+                                                    className='bg-black'
+                                                >
+                                                    {subcategory}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    )}
+                                />
+
+                                {errors.subcategory && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.subcategory.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <label className='block font-semibold text-gray-300 mb-1'>Опис деталей (мінімум 100 слів)*</label>
+
+                                <Controller
+                                    name='detailed_description'
+                                    control={control}
+                                    rules={{
+                                        required: "Це поле обов'язкове",
+                                        validate: (value) => {
+                                            const wordCount = value
+                                                ?.split(/\s+/)
+                                                .filter((word: string) => word).length;
+                                            return (
+                                                wordCount >= 100 || `Мінімум 100 слів. Зараз (${wordCount} слів)`
+                                            );
+                                        },
+                                    }}
+
+                                    render={({ field }) => (
+                                        <RichTextEditor
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                        />
+                                    )}
+                                />
+                                {errors.detailed_description && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.detailed_description.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <Input
+                                    label='Посилання на відеоогляд'
+                                    placeholder='https://www.youtube.com/watch?v=example'
+                                    {...register('video_url', {
+                                        pattern: {
+                                            value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+                                            message: 'Неправильне посилання на YouTube'
+                                        },
+                                    })}
+                                />
+                                {errors.video_url && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.video_url.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <Input
+                                    label='Регулярна ціна *'
+                                    placeholder='20$'
+                                    {...register('regular_price', {
+                                        required: "Це поле обов'язкове",
+                                        valueAsNumber: true,
+                                        min: { value: 1, message: "Ціна повинна бути більше 1" },
+                                        validate: (value) => isNaN(value) || value > 0 || "Ціна повинна бути більше 0",
+                                    })}
+                                />
+                                {errors.regular_price && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.regular_price.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <Input
+                                    label='Ціна розпродажу *'
+                                    placeholder='20$'
+                                    {...register('sale_price', {
+                                        required: "Це поле обов'язкове",
+                                        valueAsNumber: true,
+                                        min: { value: 1, message: "Ціна повинна бути більше 1" },
+                                        validate: (value) => {
+                                            if (isNaN(value)) return "Ціна повинна бути числом";
+                                            if (regularPrice && value >= regularPrice) {
+                                                return "Ціна розпродажу повинна бути менше регулярної ціни";
+                                            }
+                                            return true;
+                                        },
+                                    })}
+                                />
+                                {errors.sale_price && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.sale_price.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <Input
+                                    label='Кількість на складі *'
+                                    placeholder='100'
+                                    {...register('stock', {
+                                        required: "Це поле обов'язкове",
+                                        valueAsNumber: true,
+                                        min: { value: 1, message: "Кількість повинна бути не менше 1" },
+                                        max: { value: 1000, message: "Максимальна кількість 1000" },
+                                        validate: (value) => {
+                                            if (isNaN(value)) return "Кількість повинна бути числом";
+                                            if (!Number.isInteger(value)) return "Кількість повинна бути цілим числом";
+                                            return true;
+                                        },
+                                    })}
+                                />
+                                {errors.stock && (
+                                    <p className='text-red-500 text-sm mt-1'>
+                                        {errors.stock.message as string}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className='mt-2'>
+                                <SizeSelector control={control} errors={errors} />
+                            </div>
+
+                            <div className='mt-3'>
+                                <label className='block font-semibold text-gray-300 mb-1'>Оберіть код на знижку</label>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className='mt-6 flex justify-end gap-3'>
+                {
+                    isChanged && (
+                        <button
+                            onClick={handleSaveDraft}
+                            type='button'
+                            className='px-4 py-2 bg-gray-700 text-white rounded-md'>
+                            Зберегти як чернетку
+                        </button>
+                    )
+                }
+                <button
+                    type='submit'
+                    className='px-4 py-2 bg-blue-700 text-white rounded-md'
+                    disabled={loading}
+                    >
+                    {loading ? "Завантаження..." : "Опублікувати товар"}
+                </button>
             </div>
         </form>
     )
