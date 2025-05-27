@@ -44,6 +44,14 @@ const Page = () => {
         retry: 2,
     });
 
+    const { data: discountCodes = [], isLoading: discountLoading } = useQuery({
+        queryKey: ["shop-discounts"],
+        queryFn: async () => {
+            const res = await axiosInstance.get('/product/api/get-discount-codes');
+            return res?.data?.discount_codes || [];
+        },
+    });
+
     const categories = data?.categories || [];
     const subCategoriesData = data?.subCategories || [];
 
@@ -487,6 +495,30 @@ const Page = () => {
 
                             <div className='mt-3'>
                                 <label className='block font-semibold text-gray-300 mb-1'>Оберіть код на знижку</label>
+
+
+                                {discountLoading ? (
+                                    <p className='text-gray-400'>
+                                        Завантаження кодів на знижку...
+                                    </p>
+                                ) : (
+                                    <div className='flex flex-wrap gap-2'>
+                                        {discountCodes?.map((code: any) => (
+                                            <button key={code.id}
+                                                type='button'
+                                                className={`px-3 py-1 rounded-md text-sm font-semibold border ${watch("discountCodes")?.includes(code.id) ? "bg-blue-600 text-white border-blue-600 " : "bg-gray-800 text-gray-300 border-gray-600 hover:border-gray-700"}`}
+                                                onClick={() => {
+                                                    const currentSelection = watch("discountCodes") || [];
+                                                    const updatedSelection = currentSelection?.includes(code.id) ? currentSelection.filter((id: string) => id !== code.id) : [...currentSelection, code.id];
+                                                    setValue("discountCodes", updatedSelection);
+                                                }}
+                                            >
+                                                {code.public_name} ({code.discountValue})
+                                                {code.discountType === "percentage" ? "%" : "$"}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
 
                         </div>
@@ -509,7 +541,7 @@ const Page = () => {
                     type='submit'
                     className='px-4 py-2 bg-blue-700 text-white rounded-md'
                     disabled={loading}
-                    >
+                >
                     {loading ? "Завантаження..." : "Опублікувати товар"}
                 </button>
             </div>
