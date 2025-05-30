@@ -2,8 +2,6 @@
 import { useQuery } from '@tanstack/react-query';
 import ImagePlaceholder from 'apps/seller-ui/src/shared/components/image-placeholder';
 import axiosInstance from 'apps/seller-ui/src/utils/axiosInstance';
-
-
 import { ChevronRight } from 'lucide-react';
 import ColorSelector from 'packages/components/color-selector';
 import CustomProperties from 'packages/components/custom-properties';
@@ -11,9 +9,13 @@ import CustomSpecifications from 'packages/components/custom-specifications';
 import Input from 'packages/components/input/input';
 import RichTextEditor from 'packages/components/rich-text-editor/rich-text-editor';
 import SizeSelector from 'packages/components/size-selector/size-selector';
-
 import React, { useMemo, useState } from 'react'
-import { Controller, set, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
+
+interface UploadedImage {
+    fileId: string;
+    file_url: string;
+}
 
 const Page = () => {
 
@@ -27,7 +29,7 @@ const Page = () => {
 
     const [openImageModel, setOpenImageModel] = useState(false);
     const [isChanged, setIsChanged] = useState(true);
-    const [images, setImages] = useState<(File | null)[]>([null]);
+    const [images, setImages] = useState<(UploadedImage | null)[]>([null]);
     const [loading, setLoading] = useState(false);
 
     const { data, isLoading, isError } = useQuery({
@@ -62,43 +64,76 @@ const Page = () => {
         return selectedCategory ? subCategoriesData[selectedCategory] || [] : [];
     }, [selectedCategory, subCategoriesData]);
 
-    console.log(categories, subCategoriesData);
 
 
     const onSubmit = (data: any) => {
         console.log(data);
     };
 
-    const handleImageChange = (file: File | null, index: number) => {
-        const updatedImages = [...images];
-
-        updatedImages[index] = file;
-        if (index === images.length - 1 && images.length < 8) {
-            updatedImages.push(null);
-        }
-
-        setImages(updatedImages);
-        setValue("images", updatedImages);
+    const convertFileToBase64 = (file: File) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+        });
     };
 
-    const hadleRemoveImage = (index: number) => {
-        setImages((prevImages) => {
-            let updatedImages = [...prevImages];
+    const handleImageChange = async (file: File | null, index: number) => {
+        if (!file) return;
 
-            if (index === - 1) {
-                updatedImages.pop();
-            } else {
-                updatedImages.slice(index, 1);
-            }
+        try {
+            const fileName = await convertFileToBase64(file);
 
-            if (updatedImages.includes(null) && updatedImages.length < 8) {
+            const response = await axiosInstance.post("/product/api/upload-product-image", {fileName});
+
+            const uploadedImage:UploadedImage={
+                fileId:response.data.fileId,
+                file_url: response.data.file_url,
+            };
+
+            const updatedImages = [...images];
+
+
+            updatedImages[index] = uploadedImage;
+
+            if (index === images.length - 1 && updatedImages.length < 8) {
                 updatedImages.push(null);
             }
 
-            return updatedImages;
-        });
+            setImages(updatedImages);
+            setValue("images", updatedImages);
+        } catch (error) {
+            console.log("Error uploading image:", error);
+        }
+    };
 
-        setValue("images", images);
+    const hadleRemoveImage =async (index: number) => {
+        try {
+            const updatedImages = [...images];
+
+            const imageToDelete= updatedImages[index];
+            if(imageToDelete && typeof imageToDelete==="object"){
+                await axiosInstance.delete("/product/api/delete-product-image", {
+                    data:{
+                        fileId: imageToDelete.fileId!,
+                    },
+                });
+            }
+
+            updatedImages.slice(index, 1);
+
+            //add null placeholder if last image is removed
+            if(!updatedImages.includes(null) && updatedImages.length < 8){
+                updatedImages.push(null);
+            }
+
+            setImages(updatedImages);
+            setValue("images", updatedImages);
+
+        } catch (error) {
+            console.log("Error removing image:", error);
+        }
     };
 
     const handleSaveDraft = () => {
@@ -506,7 +541,7 @@ const Page = () => {
                                         {discountCodes?.map((code: any) => (
                                             <button key={code.id}
                                                 type='button'
-                                                className={`px-3 py-1 rounded-md text-sm font-semibold border ${watch("discountCodes")?.includes(code.id) ? "bg-blue-600 text-white border-blue-600 " : "bg-gray-800 text-gray-300 border-gray-600 hover:border-gray-700"}`}
+                                                className={`px-3 py-1 rounded-md text-sm font-semibold border ${watch("discountCodes")?.includes(code.id) ? "bg-blue-600 text-white border-blue-600 " : "bg-gray-700 text-gray-300 border-gray-600 hover:border-gray-800"}`}
                                                 onClick={() => {
                                                     const currentSelection = watch("discountCodes") || [];
                                                     const updatedSelection = currentSelection?.includes(code.id) ? currentSelection.filter((id: string) => id !== code.id) : [...currentSelection, code.id];
