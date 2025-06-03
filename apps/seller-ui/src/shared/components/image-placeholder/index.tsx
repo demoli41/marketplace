@@ -4,13 +4,25 @@ import React from 'react'
 
 
 const ImagePlaceholder = ({
-    size,small,onImageChange,onRemove,defaultImage=null,index=null,setOpnenImageModal,
+    size,
+    small,
+    onImageChange,
+    pictureUploadingLoader,
+    onRemove,
+    defaultImage=null,
+    index=null,
+    setSelectedImage,
+    setOpnenImageModal,
+    images,
 }:{
         size:string;
         small?:boolean;
+        pictureUploadingLoader:boolean;
         onImageChange:(file:File | null,index:number)=>void;
         onRemove?:(index:number)=>void;
         defaultImage?:string | null;
+        setSelectedImage:(e:string)=>void;
+        images:any 
         setOpnenImageModal:(openImageModel:boolean)=>void;     
         index?:any;
 }) => {
@@ -35,12 +47,19 @@ const ImagePlaceholder = ({
         />
         {imagePreview ? (
             <>
-            <button type="button" onClick={()=>onRemove?.(index!)}
+            <button 
+            disabled={pictureUploadingLoader}
+            type="button" onClick={()=>onRemove?.(index!)}
                 className='absolute top-3 right-3 p-2 bg-red-600 !rounded shadow-lg'>
                     <X size={16}/>
             </button>
-            <button className='absolute top-3 right-[70px] p-2 !rounded shadow-lg bg-blue-500 cursor-pointer'
-            onClick={()=>setOpnenImageModal(true)}
+            <button 
+            disabled={pictureUploadingLoader}
+            className='absolute top-3 right-[70px] p-2 !rounded shadow-lg bg-blue-500 cursor-pointer'
+            onClick={()=>{
+                setOpnenImageModal(true);
+                setSelectedImage(images[index].file_url);
+            }}
             >
                 <WandSparkles size={16}/>
             </button>
