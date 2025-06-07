@@ -2,6 +2,10 @@ import { AuthError, NotFoundError, ValidationError } from "@packages/error-handl
 import { imagekit } from "@packages/libs/imagekit";
 import prisma from "@packages/libs/prisma";
 import { NextFunction, Request, Response } from "express";
+import { Prisma } from "../../../../generated/prisma";
+
+
+
 
 
 
@@ -132,8 +136,9 @@ export const uploadProductImage = async (req: Request, res: Response, next: Next
             file_url: response.url,
             fileId: response.fileId,
         });
-    } catch (error) {
-        next(error);
+    } catch (error:any) {
+        console.error("Create product error:", error.message, error);
+        res.status(500).json({ error: "Internal server error", detail: error.message });
     }
 };
 
@@ -245,13 +250,14 @@ export const createProduct = async (req: any, res: Response, next: NextFunction)
             newProduct,
         });
 
-    } catch (error) {
-        next(error);
+    } catch (error:any) {
+        console.error("Create product error:", error.message, error);
+        res.status(500).json({ error: "Internal server error", detail: error.message });
     }
 }
 
 // Get all products
-export const getAllProducts = async (req: any, res: Response, next: NextFunction) => {
+export const getShopProducts = async (req: any, res: Response, next: NextFunction) => {
     try {
         const products = await prisma.products.findMany({
             where: {
@@ -368,3 +374,65 @@ export const restoreProduct = async (req: any, res: Response, next: NextFunction
         });
     }
 };
+
+// Get All Products
+export const getAllProducts = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const page = parseInt(req.query.page as string) || 1;
+        const limit = parseInt(req.query.limit as string) || 20;
+        const skip = (page - 1) * limit;
+        const type = req.query.type;
+
+        const baseFilter = {
+            OR: [
+                {
+                    starting_date: null,
+
+                },{
+                    ending_date: null,
+                },
+            ],
+        };
+
+        const orderBy:Prisma.productsOrderByWithRelationInput = 
+            type==="latest"
+            ?{createdAt: "desc" as Prisma.SortOrder}
+            :{totalSales: "desc" as Prisma.SortOrder};
+
+            const [products,total,top10Products]= await Promise.all([
+                prisma.products.findMany({
+                    skip,
+                    take: limit,
+                    include: {
+                        images: true,
+                        Shop:true,
+                    },
+                    //where:baseFilter,
+                    //TODO: Fix the filter to include only products that are not deleted
+                    orderBy:{
+                        totalSales: "desc",
+                    },
+                }),
+
+                prisma.products.count({where: baseFilter}),
+                prisma.products.findMany({
+                    take: 10,
+                    where: baseFilter,
+                    orderBy,
+                }),
+            ]);
+
+            res.status(200).json({
+                products,
+                top10By: type === "latest" ? "latest" : "topSales",
+                top10Products,
+                total,
+                currentPage: page,
+                totalPages: Math.ceil(total / limit),
+            });
+        
+
+    } catch (error) {
+        next(error);
+    }
+}

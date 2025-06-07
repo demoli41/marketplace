@@ -28,13 +28,13 @@ function HeaderBottom() {
 
 
   return (
-    <div className={`w-full transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 z-[100 shadow-lg' : 'relative'} `}
+    <div className={`w-full transition-all  bg-white pb-3 duration-300 ${isSticky ? 'fixed top-0 left-0 z-[100 shadow-lg' : 'relative'} `}
     >
         <div className={`w-[80%] relative m-auto flex items-center justify-between 
             ${isSticky ? 'pt-3' : 'py-0'} `}
             >
                 {/*All dropdowns */}
-                <div className={`w-[260px] ${isSticky && '-mb-2'} cursor-pointer flex items-center justify-between px-5 h-[50px] bg-[#3489ff]`}
+                <div className={`w-[260px]  ${show ? 'rounded-t-[24px]' : "rounded-[24px]"} ${isSticky && '-mb-2'} cursor-pointer flex items-center justify-between px-5 h-[50px] bg-[#3489ff]`}
                 onClick={() => setShow(!show)}
                 >
                     <div className='flex items-center gap-2'>
@@ -46,7 +46,7 @@ function HeaderBottom() {
 
                 {/*Dropdown menu */}
                 {show && (
-                    <div className={`absolute left-0 ${isSticky ? 'top-[70px]' : 'top-[50px]'} w-[260px] h-[400px] bg-[#f5f5f5]`}>
+                    <div className={`absolute left-0 ${isSticky ? 'top-[70px]' : 'top-[50px]'} rounded-b-[24px] w-[260px] h-[400px] bg-[#f5f5f5] `}>
 
                     </div>
                 )}

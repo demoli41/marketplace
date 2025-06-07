@@ -8,7 +8,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { useState } from 'react';
-import { set, useForm } from 'react-hook-form';
+import {  useForm } from 'react-hook-form';
+
 
 type FormData={
   email:string

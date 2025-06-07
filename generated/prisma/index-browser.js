@@ -207,6 +207,7 @@ exports.Prisma.ProductsScalarFieldEnum = {
   custom_specifications: 'custom_specifications',
   custom_properties: 'custom_properties',
   isDeleted: 'isDeleted',
+  totalSales: 'totalSales',
   cashOnDelivery: 'cashOnDelivery',
   discount_codes: 'discount_codes',
   status: 'status',
