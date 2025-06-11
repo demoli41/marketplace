@@ -19,7 +19,7 @@ const fetchUser=async () => {
 const useUser=()=>{
     const {
         data:user,
-        isLoading,
+        isPending:isLoading,
         isError,
         refetch,
     }=useQuery({
