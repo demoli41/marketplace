@@ -217,6 +217,31 @@ exports.Prisma.ProductsScalarFieldEnum = {
   shopId: 'shopId'
 };
 
+exports.Prisma.ProductAnalyticsScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  shopId: 'shopId',
+  views: 'views',
+  cartAdds: 'cartAdds',
+  wishListAdds: 'wishListAdds',
+  purchases: 'purchases',
+  lastViewedAt: 'lastViewedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserAnalyticsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  lastVisited: 'lastVisited',
+  country: 'country',
+  city: 'city',
+  device: 'device',
+  actions: 'actions',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -240,7 +265,9 @@ exports.Prisma.ModelName = {
   sellers: 'sellers',
   site_config: 'site_config',
   discount_codes: 'discount_codes',
-  products: 'products'
+  products: 'products',
+  productAnalytics: 'productAnalytics',
+  userAnalytics: 'userAnalytics'
 };
 
 /**

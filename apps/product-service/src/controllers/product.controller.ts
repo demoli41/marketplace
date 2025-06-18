@@ -2,7 +2,7 @@ import { AuthError, NotFoundError, ValidationError } from "@packages/error-handl
 import { imagekit } from "@packages/libs/imagekit";
 import prisma from "@packages/libs/prisma";
 import { NextFunction, Request, Response } from "express";
-import { Prisma } from "../../../../generated/prisma";
+import { Prisma } from "../../../../generated/prisma/client";
 
 
 
@@ -384,14 +384,19 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
         const type = req.query.type;
 
         const baseFilter = {
-            OR: [
-                {
-                    starting_date: null,
+            isDeleted: false, 
+            // OR: {
+            //     starting_date: null,
+            //     ending_date: null,
+            // },
+           // OR: [
+               // {
+                   // starting_date: null,
 
-                },{
-                    ending_date: null,
-                },
-            ],
+              //  },{
+                    //ending_date: null,
+              //  },
+          //  ],
         };
 
         const orderBy:Prisma.productsOrderByWithRelationInput = 
@@ -407,11 +412,9 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
                         images: true,
                         Shop:true,
                     },
-                    //where:baseFilter,
+                    where:baseFilter,
                     //TODO: Fix the filter to include only products that are not deleted
-                    orderBy:{
-                        totalSales: "desc",
-                    },
+                    orderBy,
                 }),
 
                 prisma.products.count({where: baseFilter}),

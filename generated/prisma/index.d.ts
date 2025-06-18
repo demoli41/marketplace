@@ -53,6 +53,16 @@ export type discount_codes = $Result.DefaultSelection<Prisma.$discount_codesPayl
  * 
  */
 export type products = $Result.DefaultSelection<Prisma.$productsPayload>
+/**
+ * Model productAnalytics
+ * 
+ */
+export type productAnalytics = $Result.DefaultSelection<Prisma.$productAnalyticsPayload>
+/**
+ * Model userAnalytics
+ * 
+ */
+export type userAnalytics = $Result.DefaultSelection<Prisma.$userAnalyticsPayload>
 
 /**
  * Enums
@@ -243,6 +253,26 @@ export class PrismaClient<
     * ```
     */
   get products(): Prisma.productsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.productAnalytics`: Exposes CRUD operations for the **productAnalytics** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProductAnalytics
+    * const productAnalytics = await prisma.productAnalytics.findMany()
+    * ```
+    */
+  get productAnalytics(): Prisma.productAnalyticsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userAnalytics`: Exposes CRUD operations for the **userAnalytics** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserAnalytics
+    * const userAnalytics = await prisma.userAnalytics.findMany()
+    * ```
+    */
+  get userAnalytics(): Prisma.userAnalyticsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -690,7 +720,9 @@ export namespace Prisma {
     sellers: 'sellers',
     site_config: 'site_config',
     discount_codes: 'discount_codes',
-    products: 'products'
+    products: 'products',
+    productAnalytics: 'productAnalytics',
+    userAnalytics: 'userAnalytics'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -709,7 +741,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "images" | "users" | "shopReviews" | "shops" | "sellers" | "site_config" | "discount_codes" | "products"
+      modelProps: "images" | "users" | "shopReviews" | "shops" | "sellers" | "site_config" | "discount_codes" | "products" | "productAnalytics" | "userAnalytics"
       txIsolationLevel: never
     }
     model: {
@@ -1305,6 +1337,154 @@ export namespace Prisma {
           }
         }
       }
+      productAnalytics: {
+        payload: Prisma.$productAnalyticsPayload<ExtArgs>
+        fields: Prisma.productAnalyticsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.productAnalyticsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.productAnalyticsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          findFirst: {
+            args: Prisma.productAnalyticsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.productAnalyticsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          findMany: {
+            args: Prisma.productAnalyticsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>[]
+          }
+          create: {
+            args: Prisma.productAnalyticsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          createMany: {
+            args: Prisma.productAnalyticsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.productAnalyticsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          update: {
+            args: Prisma.productAnalyticsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          deleteMany: {
+            args: Prisma.productAnalyticsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.productAnalyticsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.productAnalyticsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$productAnalyticsPayload>
+          }
+          aggregate: {
+            args: Prisma.ProductAnalyticsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProductAnalytics>
+          }
+          groupBy: {
+            args: Prisma.productAnalyticsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ProductAnalyticsGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.productAnalyticsFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.productAnalyticsAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.productAnalyticsCountArgs<ExtArgs>
+            result: $Utils.Optional<ProductAnalyticsCountAggregateOutputType> | number
+          }
+        }
+      }
+      userAnalytics: {
+        payload: Prisma.$userAnalyticsPayload<ExtArgs>
+        fields: Prisma.userAnalyticsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.userAnalyticsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.userAnalyticsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          findFirst: {
+            args: Prisma.userAnalyticsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.userAnalyticsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          findMany: {
+            args: Prisma.userAnalyticsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>[]
+          }
+          create: {
+            args: Prisma.userAnalyticsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          createMany: {
+            args: Prisma.userAnalyticsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.userAnalyticsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          update: {
+            args: Prisma.userAnalyticsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          deleteMany: {
+            args: Prisma.userAnalyticsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.userAnalyticsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.userAnalyticsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$userAnalyticsPayload>
+          }
+          aggregate: {
+            args: Prisma.UserAnalyticsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserAnalytics>
+          }
+          groupBy: {
+            args: Prisma.userAnalyticsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserAnalyticsGroupByOutputType>[]
+          }
+          findRaw: {
+            args: Prisma.userAnalyticsFindRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          aggregateRaw: {
+            args: Prisma.userAnalyticsAggregateRawArgs<ExtArgs>
+            result: JsonObject
+          }
+          count: {
+            args: Prisma.userAnalyticsCountArgs<ExtArgs>
+            result: $Utils.Optional<UserAnalyticsCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1384,6 +1564,8 @@ export namespace Prisma {
     site_config?: site_configOmit
     discount_codes?: discount_codesOmit
     products?: productsOmit
+    productAnalytics?: productAnalyticsOmit
+    userAnalytics?: userAnalyticsOmit
   }
 
   /* Types for Logging */
@@ -1480,11 +1662,13 @@ export namespace Prisma {
   export type UsersCountOutputType = {
     avatar: number
     shopReviews: number
+    userAnalytics: number
   }
 
   export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     avatar?: boolean | UsersCountOutputTypeCountAvatarArgs
     shopReviews?: boolean | UsersCountOutputTypeCountShopReviewsArgs
+    userAnalytics?: boolean | UsersCountOutputTypeCountUserAnalyticsArgs
   }
 
   // Custom InputTypes
@@ -1512,6 +1696,13 @@ export namespace Prisma {
     where?: shopReviewsWhereInput
   }
 
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountUserAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: userAnalyticsWhereInput
+  }
+
 
   /**
    * Count Type ShopsCountOutputType
@@ -1521,12 +1712,14 @@ export namespace Prisma {
     avatar: number
     reviews: number
     products: number
+    productAnalytics: number
   }
 
   export type ShopsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     avatar?: boolean | ShopsCountOutputTypeCountAvatarArgs
     reviews?: boolean | ShopsCountOutputTypeCountReviewsArgs
     products?: boolean | ShopsCountOutputTypeCountProductsArgs
+    productAnalytics?: boolean | ShopsCountOutputTypeCountProductAnalyticsArgs
   }
 
   // Custom InputTypes
@@ -1561,6 +1754,13 @@ export namespace Prisma {
     where?: productsWhereInput
   }
 
+  /**
+   * ShopsCountOutputType without action
+   */
+  export type ShopsCountOutputTypeCountProductAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: productAnalyticsWhereInput
+  }
+
 
   /**
    * Count Type ProductsCountOutputType
@@ -1568,10 +1768,12 @@ export namespace Prisma {
 
   export type ProductsCountOutputType = {
     images: number
+    productAnalytics: number
   }
 
   export type ProductsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | ProductsCountOutputTypeCountImagesArgs
+    productAnalytics?: boolean | ProductsCountOutputTypeCountProductAnalyticsArgs
   }
 
   // Custom InputTypes
@@ -1590,6 +1792,13 @@ export namespace Prisma {
    */
   export type ProductsCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: imagesWhereInput
+  }
+
+  /**
+   * ProductsCountOutputType without action
+   */
+  export type ProductsCountOutputTypeCountProductAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: productAnalyticsWhereInput
   }
 
 
@@ -2830,6 +3039,7 @@ export namespace Prisma {
     updatedAt?: boolean
     avatar?: boolean | users$avatarArgs<ExtArgs>
     shopReviews?: boolean | users$shopReviewsArgs<ExtArgs>
+    userAnalytics?: boolean | users$userAnalyticsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
@@ -2849,6 +3059,7 @@ export namespace Prisma {
   export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     avatar?: boolean | users$avatarArgs<ExtArgs>
     shopReviews?: boolean | users$shopReviewsArgs<ExtArgs>
+    userAnalytics?: boolean | users$userAnalyticsArgs<ExtArgs>
     _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2857,6 +3068,7 @@ export namespace Prisma {
     objects: {
       avatar: Prisma.$imagesPayload<ExtArgs>[]
       shopReviews: Prisma.$shopReviewsPayload<ExtArgs>[]
+      userAnalytics: Prisma.$userAnalyticsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3231,6 +3443,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     avatar<T extends users$avatarArgs<ExtArgs> = {}>(args?: Subset<T, users$avatarArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     shopReviews<T extends users$shopReviewsArgs<ExtArgs> = {}>(args?: Subset<T, users$shopReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$shopReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userAnalytics<T extends users$userAnalyticsArgs<ExtArgs> = {}>(args?: Subset<T, users$userAnalyticsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3682,6 +3895,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ShopReviewsScalarFieldEnum | ShopReviewsScalarFieldEnum[]
+  }
+
+  /**
+   * users.userAnalytics
+   */
+  export type users$userAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    where?: userAnalyticsWhereInput
+    orderBy?: userAnalyticsOrderByWithRelationInput | userAnalyticsOrderByWithRelationInput[]
+    cursor?: userAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserAnalyticsScalarFieldEnum | UserAnalyticsScalarFieldEnum[]
   }
 
   /**
@@ -5023,6 +5260,7 @@ export namespace Prisma {
     reviews?: boolean | shops$reviewsArgs<ExtArgs>
     sellers?: boolean | sellersDefaultArgs<ExtArgs>
     products?: boolean | shops$productsArgs<ExtArgs>
+    productAnalytics?: boolean | shops$productAnalyticsArgs<ExtArgs>
     _count?: boolean | ShopsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["shops"]>
 
@@ -5050,6 +5288,7 @@ export namespace Prisma {
     reviews?: boolean | shops$reviewsArgs<ExtArgs>
     sellers?: boolean | sellersDefaultArgs<ExtArgs>
     products?: boolean | shops$productsArgs<ExtArgs>
+    productAnalytics?: boolean | shops$productAnalyticsArgs<ExtArgs>
     _count?: boolean | ShopsCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5060,6 +5299,7 @@ export namespace Prisma {
       reviews: Prisma.$shopReviewsPayload<ExtArgs>[]
       sellers: Prisma.$sellersPayload<ExtArgs>
       products: Prisma.$productsPayload<ExtArgs>[]
+      productAnalytics: Prisma.$productAnalyticsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5442,6 +5682,7 @@ export namespace Prisma {
     reviews<T extends shops$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, shops$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$shopReviewsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sellers<T extends sellersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, sellersDefaultArgs<ExtArgs>>): Prisma__sellersClient<$Result.GetResult<Prisma.$sellersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     products<T extends shops$productsArgs<ExtArgs> = {}>(args?: Subset<T, shops$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    productAnalytics<T extends shops$productAnalyticsArgs<ExtArgs> = {}>(args?: Subset<T, shops$productAnalyticsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5923,6 +6164,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductsScalarFieldEnum | ProductsScalarFieldEnum[]
+  }
+
+  /**
+   * shops.productAnalytics
+   */
+  export type shops$productAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    where?: productAnalyticsWhereInput
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    cursor?: productAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductAnalyticsScalarFieldEnum | ProductAnalyticsScalarFieldEnum[]
   }
 
   /**
@@ -9279,6 +9544,7 @@ export namespace Prisma {
     shopId?: boolean
     images?: boolean | products$imagesArgs<ExtArgs>
     Shop?: boolean | shopsDefaultArgs<ExtArgs>
+    productAnalytics?: boolean | products$productAnalyticsArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
 
@@ -9321,6 +9587,7 @@ export namespace Prisma {
   export type productsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     images?: boolean | products$imagesArgs<ExtArgs>
     Shop?: boolean | shopsDefaultArgs<ExtArgs>
+    productAnalytics?: boolean | products$productAnalyticsArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -9329,6 +9596,7 @@ export namespace Prisma {
     objects: {
       images: Prisma.$imagesPayload<ExtArgs>[]
       Shop: Prisma.$shopsPayload<ExtArgs>
+      productAnalytics: Prisma.$productAnalyticsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -9726,6 +9994,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     images<T extends products$imagesArgs<ExtArgs> = {}>(args?: Subset<T, products$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     Shop<T extends shopsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, shopsDefaultArgs<ExtArgs>>): Prisma__shopsClient<$Result.GetResult<Prisma.$shopsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    productAnalytics<T extends products$productAnalyticsArgs<ExtArgs> = {}>(args?: Subset<T, products$productAnalyticsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10179,6 +10448,30 @@ export namespace Prisma {
   }
 
   /**
+   * products.productAnalytics
+   */
+  export type products$productAnalyticsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    where?: productAnalyticsWhereInput
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    cursor?: productAnalyticsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductAnalyticsScalarFieldEnum | ProductAnalyticsScalarFieldEnum[]
+  }
+
+  /**
    * products without action
    */
   export type productsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10194,6 +10487,2109 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: productsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model productAnalytics
+   */
+
+  export type AggregateProductAnalytics = {
+    _count: ProductAnalyticsCountAggregateOutputType | null
+    _avg: ProductAnalyticsAvgAggregateOutputType | null
+    _sum: ProductAnalyticsSumAggregateOutputType | null
+    _min: ProductAnalyticsMinAggregateOutputType | null
+    _max: ProductAnalyticsMaxAggregateOutputType | null
+  }
+
+  export type ProductAnalyticsAvgAggregateOutputType = {
+    views: number | null
+    cartAdds: number | null
+    wishListAdds: number | null
+    purchases: number | null
+  }
+
+  export type ProductAnalyticsSumAggregateOutputType = {
+    views: number | null
+    cartAdds: number | null
+    wishListAdds: number | null
+    purchases: number | null
+  }
+
+  export type ProductAnalyticsMinAggregateOutputType = {
+    id: string | null
+    productId: string | null
+    shopId: string | null
+    views: number | null
+    cartAdds: number | null
+    wishListAdds: number | null
+    purchases: number | null
+    lastViewedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductAnalyticsMaxAggregateOutputType = {
+    id: string | null
+    productId: string | null
+    shopId: string | null
+    views: number | null
+    cartAdds: number | null
+    wishListAdds: number | null
+    purchases: number | null
+    lastViewedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ProductAnalyticsCountAggregateOutputType = {
+    id: number
+    productId: number
+    shopId: number
+    views: number
+    cartAdds: number
+    wishListAdds: number
+    purchases: number
+    lastViewedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ProductAnalyticsAvgAggregateInputType = {
+    views?: true
+    cartAdds?: true
+    wishListAdds?: true
+    purchases?: true
+  }
+
+  export type ProductAnalyticsSumAggregateInputType = {
+    views?: true
+    cartAdds?: true
+    wishListAdds?: true
+    purchases?: true
+  }
+
+  export type ProductAnalyticsMinAggregateInputType = {
+    id?: true
+    productId?: true
+    shopId?: true
+    views?: true
+    cartAdds?: true
+    wishListAdds?: true
+    purchases?: true
+    lastViewedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductAnalyticsMaxAggregateInputType = {
+    id?: true
+    productId?: true
+    shopId?: true
+    views?: true
+    cartAdds?: true
+    wishListAdds?: true
+    purchases?: true
+    lastViewedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ProductAnalyticsCountAggregateInputType = {
+    id?: true
+    productId?: true
+    shopId?: true
+    views?: true
+    cartAdds?: true
+    wishListAdds?: true
+    purchases?: true
+    lastViewedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ProductAnalyticsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which productAnalytics to aggregate.
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of productAnalytics to fetch.
+     */
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: productAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` productAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` productAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned productAnalytics
+    **/
+    _count?: true | ProductAnalyticsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ProductAnalyticsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProductAnalyticsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProductAnalyticsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProductAnalyticsMaxAggregateInputType
+  }
+
+  export type GetProductAnalyticsAggregateType<T extends ProductAnalyticsAggregateArgs> = {
+        [P in keyof T & keyof AggregateProductAnalytics]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProductAnalytics[P]>
+      : GetScalarType<T[P], AggregateProductAnalytics[P]>
+  }
+
+
+
+
+  export type productAnalyticsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: productAnalyticsWhereInput
+    orderBy?: productAnalyticsOrderByWithAggregationInput | productAnalyticsOrderByWithAggregationInput[]
+    by: ProductAnalyticsScalarFieldEnum[] | ProductAnalyticsScalarFieldEnum
+    having?: productAnalyticsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProductAnalyticsCountAggregateInputType | true
+    _avg?: ProductAnalyticsAvgAggregateInputType
+    _sum?: ProductAnalyticsSumAggregateInputType
+    _min?: ProductAnalyticsMinAggregateInputType
+    _max?: ProductAnalyticsMaxAggregateInputType
+  }
+
+  export type ProductAnalyticsGroupByOutputType = {
+    id: string
+    productId: string
+    shopId: string
+    views: number
+    cartAdds: number
+    wishListAdds: number
+    purchases: number
+    lastViewedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: ProductAnalyticsCountAggregateOutputType | null
+    _avg: ProductAnalyticsAvgAggregateOutputType | null
+    _sum: ProductAnalyticsSumAggregateOutputType | null
+    _min: ProductAnalyticsMinAggregateOutputType | null
+    _max: ProductAnalyticsMaxAggregateOutputType | null
+  }
+
+  type GetProductAnalyticsGroupByPayload<T extends productAnalyticsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProductAnalyticsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProductAnalyticsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProductAnalyticsGroupByOutputType[P]>
+            : GetScalarType<T[P], ProductAnalyticsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type productAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    productId?: boolean
+    shopId?: boolean
+    views?: boolean
+    cartAdds?: boolean
+    wishListAdds?: boolean
+    purchases?: boolean
+    lastViewedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    product?: boolean | productsDefaultArgs<ExtArgs>
+    shop?: boolean | shopsDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["productAnalytics"]>
+
+
+
+  export type productAnalyticsSelectScalar = {
+    id?: boolean
+    productId?: boolean
+    shopId?: boolean
+    views?: boolean
+    cartAdds?: boolean
+    wishListAdds?: boolean
+    purchases?: boolean
+    lastViewedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type productAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "shopId" | "views" | "cartAdds" | "wishListAdds" | "purchases" | "lastViewedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["productAnalytics"]>
+  export type productAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | productsDefaultArgs<ExtArgs>
+    shop?: boolean | shopsDefaultArgs<ExtArgs>
+  }
+
+  export type $productAnalyticsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "productAnalytics"
+    objects: {
+      product: Prisma.$productsPayload<ExtArgs>
+      shop: Prisma.$shopsPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      productId: string
+      shopId: string
+      views: number
+      cartAdds: number
+      wishListAdds: number
+      purchases: number
+      lastViewedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["productAnalytics"]>
+    composites: {}
+  }
+
+  type productAnalyticsGetPayload<S extends boolean | null | undefined | productAnalyticsDefaultArgs> = $Result.GetResult<Prisma.$productAnalyticsPayload, S>
+
+  type productAnalyticsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<productAnalyticsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ProductAnalyticsCountAggregateInputType | true
+    }
+
+  export interface productAnalyticsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['productAnalytics'], meta: { name: 'productAnalytics' } }
+    /**
+     * Find zero or one ProductAnalytics that matches the filter.
+     * @param {productAnalyticsFindUniqueArgs} args - Arguments to find a ProductAnalytics
+     * @example
+     * // Get one ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends productAnalyticsFindUniqueArgs>(args: SelectSubset<T, productAnalyticsFindUniqueArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ProductAnalytics that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {productAnalyticsFindUniqueOrThrowArgs} args - Arguments to find a ProductAnalytics
+     * @example
+     * // Get one ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends productAnalyticsFindUniqueOrThrowArgs>(args: SelectSubset<T, productAnalyticsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsFindFirstArgs} args - Arguments to find a ProductAnalytics
+     * @example
+     * // Get one ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends productAnalyticsFindFirstArgs>(args?: SelectSubset<T, productAnalyticsFindFirstArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ProductAnalytics that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsFindFirstOrThrowArgs} args - Arguments to find a ProductAnalytics
+     * @example
+     * // Get one ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends productAnalyticsFindFirstOrThrowArgs>(args?: SelectSubset<T, productAnalyticsFindFirstOrThrowArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProductAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findMany()
+     * 
+     * // Get first 10 ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const productAnalyticsWithIdOnly = await prisma.productAnalytics.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends productAnalyticsFindManyArgs>(args?: SelectSubset<T, productAnalyticsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ProductAnalytics.
+     * @param {productAnalyticsCreateArgs} args - Arguments to create a ProductAnalytics.
+     * @example
+     * // Create one ProductAnalytics
+     * const ProductAnalytics = await prisma.productAnalytics.create({
+     *   data: {
+     *     // ... data to create a ProductAnalytics
+     *   }
+     * })
+     * 
+     */
+    create<T extends productAnalyticsCreateArgs>(args: SelectSubset<T, productAnalyticsCreateArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ProductAnalytics.
+     * @param {productAnalyticsCreateManyArgs} args - Arguments to create many ProductAnalytics.
+     * @example
+     * // Create many ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends productAnalyticsCreateManyArgs>(args?: SelectSubset<T, productAnalyticsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ProductAnalytics.
+     * @param {productAnalyticsDeleteArgs} args - Arguments to delete one ProductAnalytics.
+     * @example
+     * // Delete one ProductAnalytics
+     * const ProductAnalytics = await prisma.productAnalytics.delete({
+     *   where: {
+     *     // ... filter to delete one ProductAnalytics
+     *   }
+     * })
+     * 
+     */
+    delete<T extends productAnalyticsDeleteArgs>(args: SelectSubset<T, productAnalyticsDeleteArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ProductAnalytics.
+     * @param {productAnalyticsUpdateArgs} args - Arguments to update one ProductAnalytics.
+     * @example
+     * // Update one ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends productAnalyticsUpdateArgs>(args: SelectSubset<T, productAnalyticsUpdateArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ProductAnalytics.
+     * @param {productAnalyticsDeleteManyArgs} args - Arguments to filter ProductAnalytics to delete.
+     * @example
+     * // Delete a few ProductAnalytics
+     * const { count } = await prisma.productAnalytics.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends productAnalyticsDeleteManyArgs>(args?: SelectSubset<T, productAnalyticsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProductAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends productAnalyticsUpdateManyArgs>(args: SelectSubset<T, productAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProductAnalytics.
+     * @param {productAnalyticsUpsertArgs} args - Arguments to update or create a ProductAnalytics.
+     * @example
+     * // Update or create a ProductAnalytics
+     * const productAnalytics = await prisma.productAnalytics.upsert({
+     *   create: {
+     *     // ... data to create a ProductAnalytics
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProductAnalytics we want to update
+     *   }
+     * })
+     */
+    upsert<T extends productAnalyticsUpsertArgs>(args: SelectSubset<T, productAnalyticsUpsertArgs<ExtArgs>>): Prisma__productAnalyticsClient<$Result.GetResult<Prisma.$productAnalyticsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ProductAnalytics that matches the filter.
+     * @param {productAnalyticsFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const productAnalytics = await prisma.productAnalytics.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: productAnalyticsFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a ProductAnalytics.
+     * @param {productAnalyticsAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const productAnalytics = await prisma.productAnalytics.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: productAnalyticsAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of ProductAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsCountArgs} args - Arguments to filter ProductAnalytics to count.
+     * @example
+     * // Count the number of ProductAnalytics
+     * const count = await prisma.productAnalytics.count({
+     *   where: {
+     *     // ... the filter for the ProductAnalytics we want to count
+     *   }
+     * })
+    **/
+    count<T extends productAnalyticsCountArgs>(
+      args?: Subset<T, productAnalyticsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProductAnalyticsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProductAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProductAnalyticsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProductAnalyticsAggregateArgs>(args: Subset<T, ProductAnalyticsAggregateArgs>): Prisma.PrismaPromise<GetProductAnalyticsAggregateType<T>>
+
+    /**
+     * Group by ProductAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {productAnalyticsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends productAnalyticsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: productAnalyticsGroupByArgs['orderBy'] }
+        : { orderBy?: productAnalyticsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, productAnalyticsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProductAnalyticsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the productAnalytics model
+   */
+  readonly fields: productAnalyticsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for productAnalytics.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__productAnalyticsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends productsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, productsDefaultArgs<ExtArgs>>): Prisma__productsClient<$Result.GetResult<Prisma.$productsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    shop<T extends shopsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, shopsDefaultArgs<ExtArgs>>): Prisma__shopsClient<$Result.GetResult<Prisma.$shopsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the productAnalytics model
+   */
+  interface productAnalyticsFieldRefs {
+    readonly id: FieldRef<"productAnalytics", 'String'>
+    readonly productId: FieldRef<"productAnalytics", 'String'>
+    readonly shopId: FieldRef<"productAnalytics", 'String'>
+    readonly views: FieldRef<"productAnalytics", 'Int'>
+    readonly cartAdds: FieldRef<"productAnalytics", 'Int'>
+    readonly wishListAdds: FieldRef<"productAnalytics", 'Int'>
+    readonly purchases: FieldRef<"productAnalytics", 'Int'>
+    readonly lastViewedAt: FieldRef<"productAnalytics", 'DateTime'>
+    readonly createdAt: FieldRef<"productAnalytics", 'DateTime'>
+    readonly updatedAt: FieldRef<"productAnalytics", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * productAnalytics findUnique
+   */
+  export type productAnalyticsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which productAnalytics to fetch.
+     */
+    where: productAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * productAnalytics findUniqueOrThrow
+   */
+  export type productAnalyticsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which productAnalytics to fetch.
+     */
+    where: productAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * productAnalytics findFirst
+   */
+  export type productAnalyticsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which productAnalytics to fetch.
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of productAnalytics to fetch.
+     */
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for productAnalytics.
+     */
+    cursor?: productAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` productAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` productAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of productAnalytics.
+     */
+    distinct?: ProductAnalyticsScalarFieldEnum | ProductAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * productAnalytics findFirstOrThrow
+   */
+  export type productAnalyticsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which productAnalytics to fetch.
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of productAnalytics to fetch.
+     */
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for productAnalytics.
+     */
+    cursor?: productAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` productAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` productAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of productAnalytics.
+     */
+    distinct?: ProductAnalyticsScalarFieldEnum | ProductAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * productAnalytics findMany
+   */
+  export type productAnalyticsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which productAnalytics to fetch.
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of productAnalytics to fetch.
+     */
+    orderBy?: productAnalyticsOrderByWithRelationInput | productAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing productAnalytics.
+     */
+    cursor?: productAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` productAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` productAnalytics.
+     */
+    skip?: number
+    distinct?: ProductAnalyticsScalarFieldEnum | ProductAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * productAnalytics create
+   */
+  export type productAnalyticsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a productAnalytics.
+     */
+    data: XOR<productAnalyticsCreateInput, productAnalyticsUncheckedCreateInput>
+  }
+
+  /**
+   * productAnalytics createMany
+   */
+  export type productAnalyticsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many productAnalytics.
+     */
+    data: productAnalyticsCreateManyInput | productAnalyticsCreateManyInput[]
+  }
+
+  /**
+   * productAnalytics update
+   */
+  export type productAnalyticsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a productAnalytics.
+     */
+    data: XOR<productAnalyticsUpdateInput, productAnalyticsUncheckedUpdateInput>
+    /**
+     * Choose, which productAnalytics to update.
+     */
+    where: productAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * productAnalytics updateMany
+   */
+  export type productAnalyticsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update productAnalytics.
+     */
+    data: XOR<productAnalyticsUpdateManyMutationInput, productAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which productAnalytics to update
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * Limit how many productAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * productAnalytics upsert
+   */
+  export type productAnalyticsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the productAnalytics to update in case it exists.
+     */
+    where: productAnalyticsWhereUniqueInput
+    /**
+     * In case the productAnalytics found by the `where` argument doesn't exist, create a new productAnalytics with this data.
+     */
+    create: XOR<productAnalyticsCreateInput, productAnalyticsUncheckedCreateInput>
+    /**
+     * In case the productAnalytics was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<productAnalyticsUpdateInput, productAnalyticsUncheckedUpdateInput>
+  }
+
+  /**
+   * productAnalytics delete
+   */
+  export type productAnalyticsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter which productAnalytics to delete.
+     */
+    where: productAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * productAnalytics deleteMany
+   */
+  export type productAnalyticsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which productAnalytics to delete
+     */
+    where?: productAnalyticsWhereInput
+    /**
+     * Limit how many productAnalytics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * productAnalytics findRaw
+   */
+  export type productAnalyticsFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * productAnalytics aggregateRaw
+   */
+  export type productAnalyticsAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * productAnalytics without action
+   */
+  export type productAnalyticsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the productAnalytics
+     */
+    select?: productAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the productAnalytics
+     */
+    omit?: productAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productAnalyticsInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model userAnalytics
+   */
+
+  export type AggregateUserAnalytics = {
+    _count: UserAnalyticsCountAggregateOutputType | null
+    _min: UserAnalyticsMinAggregateOutputType | null
+    _max: UserAnalyticsMaxAggregateOutputType | null
+  }
+
+  export type UserAnalyticsMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    lastVisited: Date | null
+    country: string | null
+    city: string | null
+    device: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserAnalyticsMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    lastVisited: Date | null
+    country: string | null
+    city: string | null
+    device: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserAnalyticsCountAggregateOutputType = {
+    id: number
+    userId: number
+    lastVisited: number
+    country: number
+    city: number
+    device: number
+    actions: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserAnalyticsMinAggregateInputType = {
+    id?: true
+    userId?: true
+    lastVisited?: true
+    country?: true
+    city?: true
+    device?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserAnalyticsMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    lastVisited?: true
+    country?: true
+    city?: true
+    device?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserAnalyticsCountAggregateInputType = {
+    id?: true
+    userId?: true
+    lastVisited?: true
+    country?: true
+    city?: true
+    device?: true
+    actions?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserAnalyticsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which userAnalytics to aggregate.
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of userAnalytics to fetch.
+     */
+    orderBy?: userAnalyticsOrderByWithRelationInput | userAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: userAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` userAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` userAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned userAnalytics
+    **/
+    _count?: true | UserAnalyticsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserAnalyticsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserAnalyticsMaxAggregateInputType
+  }
+
+  export type GetUserAnalyticsAggregateType<T extends UserAnalyticsAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserAnalytics]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserAnalytics[P]>
+      : GetScalarType<T[P], AggregateUserAnalytics[P]>
+  }
+
+
+
+
+  export type userAnalyticsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: userAnalyticsWhereInput
+    orderBy?: userAnalyticsOrderByWithAggregationInput | userAnalyticsOrderByWithAggregationInput[]
+    by: UserAnalyticsScalarFieldEnum[] | UserAnalyticsScalarFieldEnum
+    having?: userAnalyticsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserAnalyticsCountAggregateInputType | true
+    _min?: UserAnalyticsMinAggregateInputType
+    _max?: UserAnalyticsMaxAggregateInputType
+  }
+
+  export type UserAnalyticsGroupByOutputType = {
+    id: string
+    userId: string
+    lastVisited: Date
+    country: string | null
+    city: string | null
+    device: string | null
+    actions: JsonValue
+    createdAt: Date
+    updatedAt: Date
+    _count: UserAnalyticsCountAggregateOutputType | null
+    _min: UserAnalyticsMinAggregateOutputType | null
+    _max: UserAnalyticsMaxAggregateOutputType | null
+  }
+
+  type GetUserAnalyticsGroupByPayload<T extends userAnalyticsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserAnalyticsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserAnalyticsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserAnalyticsGroupByOutputType[P]>
+            : GetScalarType<T[P], UserAnalyticsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type userAnalyticsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    lastVisited?: boolean
+    country?: boolean
+    city?: boolean
+    device?: boolean
+    actions?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAnalytics"]>
+
+
+
+  export type userAnalyticsSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    lastVisited?: boolean
+    country?: boolean
+    city?: boolean
+    device?: boolean
+    actions?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type userAnalyticsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "lastVisited" | "country" | "city" | "device" | "actions" | "createdAt" | "updatedAt", ExtArgs["result"]["userAnalytics"]>
+  export type userAnalyticsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | usersDefaultArgs<ExtArgs>
+  }
+
+  export type $userAnalyticsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "userAnalytics"
+    objects: {
+      user: Prisma.$usersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      lastVisited: Date
+      country: string | null
+      city: string | null
+      device: string | null
+      actions: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userAnalytics"]>
+    composites: {}
+  }
+
+  type userAnalyticsGetPayload<S extends boolean | null | undefined | userAnalyticsDefaultArgs> = $Result.GetResult<Prisma.$userAnalyticsPayload, S>
+
+  type userAnalyticsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<userAnalyticsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserAnalyticsCountAggregateInputType | true
+    }
+
+  export interface userAnalyticsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['userAnalytics'], meta: { name: 'userAnalytics' } }
+    /**
+     * Find zero or one UserAnalytics that matches the filter.
+     * @param {userAnalyticsFindUniqueArgs} args - Arguments to find a UserAnalytics
+     * @example
+     * // Get one UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends userAnalyticsFindUniqueArgs>(args: SelectSubset<T, userAnalyticsFindUniqueArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserAnalytics that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {userAnalyticsFindUniqueOrThrowArgs} args - Arguments to find a UserAnalytics
+     * @example
+     * // Get one UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends userAnalyticsFindUniqueOrThrowArgs>(args: SelectSubset<T, userAnalyticsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsFindFirstArgs} args - Arguments to find a UserAnalytics
+     * @example
+     * // Get one UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends userAnalyticsFindFirstArgs>(args?: SelectSubset<T, userAnalyticsFindFirstArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserAnalytics that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsFindFirstOrThrowArgs} args - Arguments to find a UserAnalytics
+     * @example
+     * // Get one UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends userAnalyticsFindFirstOrThrowArgs>(args?: SelectSubset<T, userAnalyticsFindFirstOrThrowArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserAnalytics that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findMany()
+     * 
+     * // Get first 10 UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userAnalyticsWithIdOnly = await prisma.userAnalytics.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends userAnalyticsFindManyArgs>(args?: SelectSubset<T, userAnalyticsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserAnalytics.
+     * @param {userAnalyticsCreateArgs} args - Arguments to create a UserAnalytics.
+     * @example
+     * // Create one UserAnalytics
+     * const UserAnalytics = await prisma.userAnalytics.create({
+     *   data: {
+     *     // ... data to create a UserAnalytics
+     *   }
+     * })
+     * 
+     */
+    create<T extends userAnalyticsCreateArgs>(args: SelectSubset<T, userAnalyticsCreateArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserAnalytics.
+     * @param {userAnalyticsCreateManyArgs} args - Arguments to create many UserAnalytics.
+     * @example
+     * // Create many UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends userAnalyticsCreateManyArgs>(args?: SelectSubset<T, userAnalyticsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a UserAnalytics.
+     * @param {userAnalyticsDeleteArgs} args - Arguments to delete one UserAnalytics.
+     * @example
+     * // Delete one UserAnalytics
+     * const UserAnalytics = await prisma.userAnalytics.delete({
+     *   where: {
+     *     // ... filter to delete one UserAnalytics
+     *   }
+     * })
+     * 
+     */
+    delete<T extends userAnalyticsDeleteArgs>(args: SelectSubset<T, userAnalyticsDeleteArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserAnalytics.
+     * @param {userAnalyticsUpdateArgs} args - Arguments to update one UserAnalytics.
+     * @example
+     * // Update one UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends userAnalyticsUpdateArgs>(args: SelectSubset<T, userAnalyticsUpdateArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserAnalytics.
+     * @param {userAnalyticsDeleteManyArgs} args - Arguments to filter UserAnalytics to delete.
+     * @example
+     * // Delete a few UserAnalytics
+     * const { count } = await prisma.userAnalytics.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends userAnalyticsDeleteManyArgs>(args?: SelectSubset<T, userAnalyticsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends userAnalyticsUpdateManyArgs>(args: SelectSubset<T, userAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UserAnalytics.
+     * @param {userAnalyticsUpsertArgs} args - Arguments to update or create a UserAnalytics.
+     * @example
+     * // Update or create a UserAnalytics
+     * const userAnalytics = await prisma.userAnalytics.upsert({
+     *   create: {
+     *     // ... data to create a UserAnalytics
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserAnalytics we want to update
+     *   }
+     * })
+     */
+    upsert<T extends userAnalyticsUpsertArgs>(args: SelectSubset<T, userAnalyticsUpsertArgs<ExtArgs>>): Prisma__userAnalyticsClient<$Result.GetResult<Prisma.$userAnalyticsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserAnalytics that matches the filter.
+     * @param {userAnalyticsFindRawArgs} args - Select which filters you would like to apply.
+     * @example
+     * const userAnalytics = await prisma.userAnalytics.findRaw({
+     *   filter: { age: { $gt: 25 } }
+     * })
+     */
+    findRaw(args?: userAnalyticsFindRawArgs): Prisma.PrismaPromise<JsonObject>
+
+    /**
+     * Perform aggregation operations on a UserAnalytics.
+     * @param {userAnalyticsAggregateRawArgs} args - Select which aggregations you would like to apply.
+     * @example
+     * const userAnalytics = await prisma.userAnalytics.aggregateRaw({
+     *   pipeline: [
+     *     { $match: { status: "registered" } },
+     *     { $group: { _id: "$country", total: { $sum: 1 } } }
+     *   ]
+     * })
+     */
+    aggregateRaw(args?: userAnalyticsAggregateRawArgs): Prisma.PrismaPromise<JsonObject>
+
+
+    /**
+     * Count the number of UserAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsCountArgs} args - Arguments to filter UserAnalytics to count.
+     * @example
+     * // Count the number of UserAnalytics
+     * const count = await prisma.userAnalytics.count({
+     *   where: {
+     *     // ... the filter for the UserAnalytics we want to count
+     *   }
+     * })
+    **/
+    count<T extends userAnalyticsCountArgs>(
+      args?: Subset<T, userAnalyticsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserAnalyticsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserAnalyticsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserAnalyticsAggregateArgs>(args: Subset<T, UserAnalyticsAggregateArgs>): Prisma.PrismaPromise<GetUserAnalyticsAggregateType<T>>
+
+    /**
+     * Group by UserAnalytics.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {userAnalyticsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends userAnalyticsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: userAnalyticsGroupByArgs['orderBy'] }
+        : { orderBy?: userAnalyticsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, userAnalyticsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserAnalyticsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the userAnalytics model
+   */
+  readonly fields: userAnalyticsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for userAnalytics.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__userAnalyticsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the userAnalytics model
+   */
+  interface userAnalyticsFieldRefs {
+    readonly id: FieldRef<"userAnalytics", 'String'>
+    readonly userId: FieldRef<"userAnalytics", 'String'>
+    readonly lastVisited: FieldRef<"userAnalytics", 'DateTime'>
+    readonly country: FieldRef<"userAnalytics", 'String'>
+    readonly city: FieldRef<"userAnalytics", 'String'>
+    readonly device: FieldRef<"userAnalytics", 'String'>
+    readonly actions: FieldRef<"userAnalytics", 'Json'>
+    readonly createdAt: FieldRef<"userAnalytics", 'DateTime'>
+    readonly updatedAt: FieldRef<"userAnalytics", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * userAnalytics findUnique
+   */
+  export type userAnalyticsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which userAnalytics to fetch.
+     */
+    where: userAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * userAnalytics findUniqueOrThrow
+   */
+  export type userAnalyticsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which userAnalytics to fetch.
+     */
+    where: userAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * userAnalytics findFirst
+   */
+  export type userAnalyticsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which userAnalytics to fetch.
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of userAnalytics to fetch.
+     */
+    orderBy?: userAnalyticsOrderByWithRelationInput | userAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for userAnalytics.
+     */
+    cursor?: userAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` userAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` userAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of userAnalytics.
+     */
+    distinct?: UserAnalyticsScalarFieldEnum | UserAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * userAnalytics findFirstOrThrow
+   */
+  export type userAnalyticsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which userAnalytics to fetch.
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of userAnalytics to fetch.
+     */
+    orderBy?: userAnalyticsOrderByWithRelationInput | userAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for userAnalytics.
+     */
+    cursor?: userAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` userAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` userAnalytics.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of userAnalytics.
+     */
+    distinct?: UserAnalyticsScalarFieldEnum | UserAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * userAnalytics findMany
+   */
+  export type userAnalyticsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter, which userAnalytics to fetch.
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of userAnalytics to fetch.
+     */
+    orderBy?: userAnalyticsOrderByWithRelationInput | userAnalyticsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing userAnalytics.
+     */
+    cursor?: userAnalyticsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` userAnalytics from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` userAnalytics.
+     */
+    skip?: number
+    distinct?: UserAnalyticsScalarFieldEnum | UserAnalyticsScalarFieldEnum[]
+  }
+
+  /**
+   * userAnalytics create
+   */
+  export type userAnalyticsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a userAnalytics.
+     */
+    data: XOR<userAnalyticsCreateInput, userAnalyticsUncheckedCreateInput>
+  }
+
+  /**
+   * userAnalytics createMany
+   */
+  export type userAnalyticsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many userAnalytics.
+     */
+    data: userAnalyticsCreateManyInput | userAnalyticsCreateManyInput[]
+  }
+
+  /**
+   * userAnalytics update
+   */
+  export type userAnalyticsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a userAnalytics.
+     */
+    data: XOR<userAnalyticsUpdateInput, userAnalyticsUncheckedUpdateInput>
+    /**
+     * Choose, which userAnalytics to update.
+     */
+    where: userAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * userAnalytics updateMany
+   */
+  export type userAnalyticsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update userAnalytics.
+     */
+    data: XOR<userAnalyticsUpdateManyMutationInput, userAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which userAnalytics to update
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * Limit how many userAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * userAnalytics upsert
+   */
+  export type userAnalyticsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the userAnalytics to update in case it exists.
+     */
+    where: userAnalyticsWhereUniqueInput
+    /**
+     * In case the userAnalytics found by the `where` argument doesn't exist, create a new userAnalytics with this data.
+     */
+    create: XOR<userAnalyticsCreateInput, userAnalyticsUncheckedCreateInput>
+    /**
+     * In case the userAnalytics was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<userAnalyticsUpdateInput, userAnalyticsUncheckedUpdateInput>
+  }
+
+  /**
+   * userAnalytics delete
+   */
+  export type userAnalyticsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
+    /**
+     * Filter which userAnalytics to delete.
+     */
+    where: userAnalyticsWhereUniqueInput
+  }
+
+  /**
+   * userAnalytics deleteMany
+   */
+  export type userAnalyticsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which userAnalytics to delete
+     */
+    where?: userAnalyticsWhereInput
+    /**
+     * Limit how many userAnalytics to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * userAnalytics findRaw
+   */
+  export type userAnalyticsFindRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The query predicate filter. If unspecified, then all documents in the collection will match the predicate. ${@link https://docs.mongodb.com/manual/reference/operator/query MongoDB Docs}.
+     */
+    filter?: InputJsonValue
+    /**
+     * Additional options to pass to the `find` command ${@link https://docs.mongodb.com/manual/reference/command/find/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * userAnalytics aggregateRaw
+   */
+  export type userAnalyticsAggregateRawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * An array of aggregation stages to process and transform the document stream via the aggregation pipeline. ${@link https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline MongoDB Docs}.
+     */
+    pipeline?: InputJsonValue[]
+    /**
+     * Additional options to pass to the `aggregate` command ${@link https://docs.mongodb.com/manual/reference/command/aggregate/#command-fields MongoDB Docs}.
+     */
+    options?: InputJsonValue
+  }
+
+  /**
+   * userAnalytics without action
+   */
+  export type userAnalyticsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the userAnalytics
+     */
+    select?: userAnalyticsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the userAnalytics
+     */
+    omit?: userAnalyticsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: userAnalyticsInclude<ExtArgs> | null
   }
 
 
@@ -10330,6 +12726,37 @@ export namespace Prisma {
   };
 
   export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum]
+
+
+  export const ProductAnalyticsScalarFieldEnum: {
+    id: 'id',
+    productId: 'productId',
+    shopId: 'shopId',
+    views: 'views',
+    cartAdds: 'cartAdds',
+    wishListAdds: 'wishListAdds',
+    purchases: 'purchases',
+    lastViewedAt: 'lastViewedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ProductAnalyticsScalarFieldEnum = (typeof ProductAnalyticsScalarFieldEnum)[keyof typeof ProductAnalyticsScalarFieldEnum]
+
+
+  export const UserAnalyticsScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    lastVisited: 'lastVisited',
+    country: 'country',
+    city: 'city',
+    device: 'device',
+    actions: 'actions',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserAnalyticsScalarFieldEnum = (typeof UserAnalyticsScalarFieldEnum)[keyof typeof UserAnalyticsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10526,6 +12953,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"users"> | Date | string
     avatar?: ImagesListRelationFilter
     shopReviews?: ShopReviewsListRelationFilter
+    userAnalytics?: UserAnalyticsListRelationFilter
   }
 
   export type usersOrderByWithRelationInput = {
@@ -10538,6 +12966,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     avatar?: imagesOrderByRelationAggregateInput
     shopReviews?: shopReviewsOrderByRelationAggregateInput
+    userAnalytics?: userAnalyticsOrderByRelationAggregateInput
   }
 
   export type usersWhereUniqueInput = Prisma.AtLeast<{
@@ -10553,6 +12982,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"users"> | Date | string
     avatar?: ImagesListRelationFilter
     shopReviews?: ShopReviewsListRelationFilter
+    userAnalytics?: UserAnalyticsListRelationFilter
   }, "id" | "email">
 
   export type usersOrderByWithAggregationInput = {
@@ -10672,6 +13102,7 @@ export namespace Prisma {
     reviews?: ShopReviewsListRelationFilter
     sellers?: XOR<SellersScalarRelationFilter, sellersWhereInput>
     products?: ProductsListRelationFilter
+    productAnalytics?: ProductAnalyticsListRelationFilter
   }
 
   export type shopsOrderByWithRelationInput = {
@@ -10692,6 +13123,7 @@ export namespace Prisma {
     reviews?: shopReviewsOrderByRelationAggregateInput
     sellers?: sellersOrderByWithRelationInput
     products?: productsOrderByRelationAggregateInput
+    productAnalytics?: productAnalyticsOrderByRelationAggregateInput
   }
 
   export type shopsWhereUniqueInput = Prisma.AtLeast<{
@@ -10715,6 +13147,7 @@ export namespace Prisma {
     reviews?: ShopReviewsListRelationFilter
     sellers?: XOR<SellersScalarRelationFilter, sellersWhereInput>
     products?: ProductsListRelationFilter
+    productAnalytics?: ProductAnalyticsListRelationFilter
   }, "id" | "sellerId">
 
   export type shopsOrderByWithAggregationInput = {
@@ -10979,6 +13412,7 @@ export namespace Prisma {
     shopId?: StringFilter<"products"> | string
     images?: ImagesListRelationFilter
     Shop?: XOR<ShopsScalarRelationFilter, shopsWhereInput>
+    productAnalytics?: ProductAnalyticsListRelationFilter
   }
 
   export type productsOrderByWithRelationInput = {
@@ -11014,6 +13448,7 @@ export namespace Prisma {
     shopId?: SortOrder
     images?: imagesOrderByRelationAggregateInput
     Shop?: shopsOrderByWithRelationInput
+    productAnalytics?: productAnalyticsOrderByRelationAggregateInput
   }
 
   export type productsWhereUniqueInput = Prisma.AtLeast<{
@@ -11052,6 +13487,7 @@ export namespace Prisma {
     shopId?: StringFilter<"products"> | string
     images?: ImagesListRelationFilter
     Shop?: XOR<ShopsScalarRelationFilter, shopsWhereInput>
+    productAnalytics?: ProductAnalyticsListRelationFilter
   }, "id" | "slug">
 
   export type productsOrderByWithAggregationInput = {
@@ -11128,6 +13564,166 @@ export namespace Prisma {
     shopId?: StringWithAggregatesFilter<"products"> | string
   }
 
+  export type productAnalyticsWhereInput = {
+    AND?: productAnalyticsWhereInput | productAnalyticsWhereInput[]
+    OR?: productAnalyticsWhereInput[]
+    NOT?: productAnalyticsWhereInput | productAnalyticsWhereInput[]
+    id?: StringFilter<"productAnalytics"> | string
+    productId?: StringFilter<"productAnalytics"> | string
+    shopId?: StringFilter<"productAnalytics"> | string
+    views?: IntFilter<"productAnalytics"> | number
+    cartAdds?: IntFilter<"productAnalytics"> | number
+    wishListAdds?: IntFilter<"productAnalytics"> | number
+    purchases?: IntFilter<"productAnalytics"> | number
+    lastViewedAt?: DateTimeNullableFilter<"productAnalytics"> | Date | string | null
+    createdAt?: DateTimeFilter<"productAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"productAnalytics"> | Date | string
+    product?: XOR<ProductsScalarRelationFilter, productsWhereInput>
+    shop?: XOR<ShopsScalarRelationFilter, shopsWhereInput>
+  }
+
+  export type productAnalyticsOrderByWithRelationInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    shopId?: SortOrder
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+    lastViewedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    product?: productsOrderByWithRelationInput
+    shop?: shopsOrderByWithRelationInput
+  }
+
+  export type productAnalyticsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    productId?: string
+    AND?: productAnalyticsWhereInput | productAnalyticsWhereInput[]
+    OR?: productAnalyticsWhereInput[]
+    NOT?: productAnalyticsWhereInput | productAnalyticsWhereInput[]
+    shopId?: StringFilter<"productAnalytics"> | string
+    views?: IntFilter<"productAnalytics"> | number
+    cartAdds?: IntFilter<"productAnalytics"> | number
+    wishListAdds?: IntFilter<"productAnalytics"> | number
+    purchases?: IntFilter<"productAnalytics"> | number
+    lastViewedAt?: DateTimeNullableFilter<"productAnalytics"> | Date | string | null
+    createdAt?: DateTimeFilter<"productAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"productAnalytics"> | Date | string
+    product?: XOR<ProductsScalarRelationFilter, productsWhereInput>
+    shop?: XOR<ShopsScalarRelationFilter, shopsWhereInput>
+  }, "id" | "productId">
+
+  export type productAnalyticsOrderByWithAggregationInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    shopId?: SortOrder
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+    lastViewedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: productAnalyticsCountOrderByAggregateInput
+    _avg?: productAnalyticsAvgOrderByAggregateInput
+    _max?: productAnalyticsMaxOrderByAggregateInput
+    _min?: productAnalyticsMinOrderByAggregateInput
+    _sum?: productAnalyticsSumOrderByAggregateInput
+  }
+
+  export type productAnalyticsScalarWhereWithAggregatesInput = {
+    AND?: productAnalyticsScalarWhereWithAggregatesInput | productAnalyticsScalarWhereWithAggregatesInput[]
+    OR?: productAnalyticsScalarWhereWithAggregatesInput[]
+    NOT?: productAnalyticsScalarWhereWithAggregatesInput | productAnalyticsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"productAnalytics"> | string
+    productId?: StringWithAggregatesFilter<"productAnalytics"> | string
+    shopId?: StringWithAggregatesFilter<"productAnalytics"> | string
+    views?: IntWithAggregatesFilter<"productAnalytics"> | number
+    cartAdds?: IntWithAggregatesFilter<"productAnalytics"> | number
+    wishListAdds?: IntWithAggregatesFilter<"productAnalytics"> | number
+    purchases?: IntWithAggregatesFilter<"productAnalytics"> | number
+    lastViewedAt?: DateTimeNullableWithAggregatesFilter<"productAnalytics"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"productAnalytics"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"productAnalytics"> | Date | string
+  }
+
+  export type userAnalyticsWhereInput = {
+    AND?: userAnalyticsWhereInput | userAnalyticsWhereInput[]
+    OR?: userAnalyticsWhereInput[]
+    NOT?: userAnalyticsWhereInput | userAnalyticsWhereInput[]
+    id?: StringFilter<"userAnalytics"> | string
+    userId?: StringFilter<"userAnalytics"> | string
+    lastVisited?: DateTimeFilter<"userAnalytics"> | Date | string
+    country?: StringNullableFilter<"userAnalytics"> | string | null
+    city?: StringNullableFilter<"userAnalytics"> | string | null
+    device?: StringNullableFilter<"userAnalytics"> | string | null
+    actions?: JsonFilter<"userAnalytics">
+    createdAt?: DateTimeFilter<"userAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"userAnalytics"> | Date | string
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }
+
+  export type userAnalyticsOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lastVisited?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    device?: SortOrder
+    actions?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: usersOrderByWithRelationInput
+  }
+
+  export type userAnalyticsWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: userAnalyticsWhereInput | userAnalyticsWhereInput[]
+    OR?: userAnalyticsWhereInput[]
+    NOT?: userAnalyticsWhereInput | userAnalyticsWhereInput[]
+    lastVisited?: DateTimeFilter<"userAnalytics"> | Date | string
+    country?: StringNullableFilter<"userAnalytics"> | string | null
+    city?: StringNullableFilter<"userAnalytics"> | string | null
+    device?: StringNullableFilter<"userAnalytics"> | string | null
+    actions?: JsonFilter<"userAnalytics">
+    createdAt?: DateTimeFilter<"userAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"userAnalytics"> | Date | string
+    user?: XOR<UsersScalarRelationFilter, usersWhereInput>
+  }, "id" | "userId">
+
+  export type userAnalyticsOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lastVisited?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    device?: SortOrder
+    actions?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: userAnalyticsCountOrderByAggregateInput
+    _max?: userAnalyticsMaxOrderByAggregateInput
+    _min?: userAnalyticsMinOrderByAggregateInput
+  }
+
+  export type userAnalyticsScalarWhereWithAggregatesInput = {
+    AND?: userAnalyticsScalarWhereWithAggregatesInput | userAnalyticsScalarWhereWithAggregatesInput[]
+    OR?: userAnalyticsScalarWhereWithAggregatesInput[]
+    NOT?: userAnalyticsScalarWhereWithAggregatesInput | userAnalyticsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"userAnalytics"> | string
+    userId?: StringWithAggregatesFilter<"userAnalytics"> | string
+    lastVisited?: DateTimeWithAggregatesFilter<"userAnalytics"> | Date | string
+    country?: StringNullableWithAggregatesFilter<"userAnalytics"> | string | null
+    city?: StringNullableWithAggregatesFilter<"userAnalytics"> | string | null
+    device?: StringNullableWithAggregatesFilter<"userAnalytics"> | string | null
+    actions?: JsonWithAggregatesFilter<"userAnalytics">
+    createdAt?: DateTimeWithAggregatesFilter<"userAnalytics"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"userAnalytics"> | Date | string
+  }
+
   export type imagesCreateInput = {
     id?: string
     file_id: string
@@ -11194,6 +13790,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     avatar?: imagesCreateNestedManyWithoutUsersInput
     shopReviews?: shopReviewsCreateNestedManyWithoutUserInput
+    userAnalytics?: userAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -11206,6 +13803,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     avatar?: imagesUncheckedCreateNestedManyWithoutUsersInput
     shopReviews?: shopReviewsUncheckedCreateNestedManyWithoutUserInput
+    userAnalytics?: userAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersUpdateInput = {
@@ -11217,6 +13815,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUpdateManyWithoutUsersNestedInput
     shopReviews?: shopReviewsUpdateManyWithoutUserNestedInput
+    userAnalytics?: userAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -11228,6 +13827,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUncheckedUpdateManyWithoutUsersNestedInput
     shopReviews?: shopReviewsUncheckedUpdateManyWithoutUserNestedInput
+    userAnalytics?: userAnalyticsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -11339,6 +13939,7 @@ export namespace Prisma {
     reviews?: shopReviewsCreateNestedManyWithoutShopsInput
     sellers: sellersCreateNestedOneWithoutShopInput
     products?: productsCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutShopInput
   }
 
   export type shopsUncheckedCreateInput = {
@@ -11358,6 +13959,7 @@ export namespace Prisma {
     avatar?: imagesUncheckedCreateNestedManyWithoutShopsInput
     reviews?: shopReviewsUncheckedCreateNestedManyWithoutShopsInput
     products?: productsUncheckedCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutShopInput
   }
 
   export type shopsUpdateInput = {
@@ -11376,6 +13978,7 @@ export namespace Prisma {
     reviews?: shopReviewsUpdateManyWithoutShopsNestedInput
     sellers?: sellersUpdateOneRequiredWithoutShopNestedInput
     products?: productsUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutShopNestedInput
   }
 
   export type shopsUncheckedUpdateInput = {
@@ -11394,6 +13997,7 @@ export namespace Prisma {
     avatar?: imagesUncheckedUpdateManyWithoutShopsNestedInput
     reviews?: shopReviewsUncheckedUpdateManyWithoutShopsNestedInput
     products?: productsUncheckedUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutShopNestedInput
   }
 
   export type shopsCreateManyInput = {
@@ -11668,6 +14272,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     images?: imagesCreateNestedManyWithoutProductsInput
     Shop: shopsCreateNestedOneWithoutProductsInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutProductInput
   }
 
   export type productsUncheckedCreateInput = {
@@ -11702,6 +14307,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     shopId: string
     images?: imagesUncheckedCreateNestedManyWithoutProductsInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type productsUpdateInput = {
@@ -11735,6 +14341,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: imagesUpdateManyWithoutProductsNestedInput
     Shop?: shopsUpdateOneRequiredWithoutProductsNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutProductNestedInput
   }
 
   export type productsUncheckedUpdateInput = {
@@ -11768,6 +14375,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     shopId?: StringFieldUpdateOperationsInput | string
     images?: imagesUncheckedUpdateManyWithoutProductsNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type productsCreateManyInput = {
@@ -11864,6 +14472,170 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     shopId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type productAnalyticsCreateInput = {
+    id?: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product: productsCreateNestedOneWithoutProductAnalyticsInput
+    shop: shopsCreateNestedOneWithoutProductAnalyticsInput
+  }
+
+  export type productAnalyticsUncheckedCreateInput = {
+    id?: string
+    productId: string
+    shopId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type productAnalyticsUpdateInput = {
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: productsUpdateOneRequiredWithoutProductAnalyticsNestedInput
+    shop?: shopsUpdateOneRequiredWithoutProductAnalyticsNestedInput
+  }
+
+  export type productAnalyticsUncheckedUpdateInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    shopId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type productAnalyticsCreateManyInput = {
+    id?: string
+    productId: string
+    shopId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type productAnalyticsUpdateManyMutationInput = {
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type productAnalyticsUncheckedUpdateManyInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    shopId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userAnalyticsCreateInput = {
+    id?: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: usersCreateNestedOneWithoutUserAnalyticsInput
+  }
+
+  export type userAnalyticsUncheckedCreateInput = {
+    id?: string
+    userId: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type userAnalyticsUpdateInput = {
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: usersUpdateOneRequiredWithoutUserAnalyticsNestedInput
+  }
+
+  export type userAnalyticsUncheckedUpdateInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userAnalyticsCreateManyInput = {
+    id?: string
+    userId: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type userAnalyticsUpdateManyMutationInput = {
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userAnalyticsUncheckedUpdateManyInput = {
+    userId?: StringFieldUpdateOperationsInput | string
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -12007,11 +14779,21 @@ export namespace Prisma {
     none?: shopReviewsWhereInput
   }
 
+  export type UserAnalyticsListRelationFilter = {
+    every?: userAnalyticsWhereInput
+    some?: userAnalyticsWhereInput
+    none?: userAnalyticsWhereInput
+  }
+
   export type imagesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type shopReviewsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type userAnalyticsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12152,7 +14934,17 @@ export namespace Prisma {
     none?: productsWhereInput
   }
 
+  export type ProductAnalyticsListRelationFilter = {
+    every?: productAnalyticsWhereInput
+    some?: productAnalyticsWhereInput
+    none?: productAnalyticsWhereInput
+  }
+
   export type productsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type productAnalyticsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -12547,6 +15339,98 @@ export namespace Prisma {
     _max?: NestedEnumproductStatusFilter<$PrismaModel>
   }
 
+  export type ProductsScalarRelationFilter = {
+    is?: productsWhereInput
+    isNot?: productsWhereInput
+  }
+
+  export type productAnalyticsCountOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    shopId?: SortOrder
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+    lastViewedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type productAnalyticsAvgOrderByAggregateInput = {
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+  }
+
+  export type productAnalyticsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    shopId?: SortOrder
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+    lastViewedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type productAnalyticsMinOrderByAggregateInput = {
+    id?: SortOrder
+    productId?: SortOrder
+    shopId?: SortOrder
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+    lastViewedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type productAnalyticsSumOrderByAggregateInput = {
+    views?: SortOrder
+    cartAdds?: SortOrder
+    wishListAdds?: SortOrder
+    purchases?: SortOrder
+  }
+
+  export type userAnalyticsCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lastVisited?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    device?: SortOrder
+    actions?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type userAnalyticsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lastVisited?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    device?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type userAnalyticsMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    lastVisited?: SortOrder
+    country?: SortOrder
+    city?: SortOrder
+    device?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type usersCreateNestedOneWithoutAvatarInput = {
     create?: XOR<usersCreateWithoutAvatarInput, usersUncheckedCreateWithoutAvatarInput>
     connectOrCreate?: usersCreateOrConnectWithoutAvatarInput
@@ -12622,6 +15506,13 @@ export namespace Prisma {
     connect?: shopReviewsWhereUniqueInput | shopReviewsWhereUniqueInput[]
   }
 
+  export type userAnalyticsCreateNestedManyWithoutUserInput = {
+    create?: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput> | userAnalyticsCreateWithoutUserInput[] | userAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: userAnalyticsCreateOrConnectWithoutUserInput | userAnalyticsCreateOrConnectWithoutUserInput[]
+    createMany?: userAnalyticsCreateManyUserInputEnvelope
+    connect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+  }
+
   export type imagesUncheckedCreateNestedManyWithoutUsersInput = {
     create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
@@ -12634,6 +15525,13 @@ export namespace Prisma {
     connectOrCreate?: shopReviewsCreateOrConnectWithoutUserInput | shopReviewsCreateOrConnectWithoutUserInput[]
     createMany?: shopReviewsCreateManyUserInputEnvelope
     connect?: shopReviewsWhereUniqueInput | shopReviewsWhereUniqueInput[]
+  }
+
+  export type userAnalyticsUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput> | userAnalyticsCreateWithoutUserInput[] | userAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: userAnalyticsCreateOrConnectWithoutUserInput | userAnalyticsCreateOrConnectWithoutUserInput[]
+    createMany?: userAnalyticsCreateManyUserInputEnvelope
+    connect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
   }
 
   export type usersUpdatefollowingInput = {
@@ -12673,6 +15571,20 @@ export namespace Prisma {
     deleteMany?: shopReviewsScalarWhereInput | shopReviewsScalarWhereInput[]
   }
 
+  export type userAnalyticsUpdateManyWithoutUserNestedInput = {
+    create?: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput> | userAnalyticsCreateWithoutUserInput[] | userAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: userAnalyticsCreateOrConnectWithoutUserInput | userAnalyticsCreateOrConnectWithoutUserInput[]
+    upsert?: userAnalyticsUpsertWithWhereUniqueWithoutUserInput | userAnalyticsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: userAnalyticsCreateManyUserInputEnvelope
+    set?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    disconnect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    delete?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    connect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    update?: userAnalyticsUpdateWithWhereUniqueWithoutUserInput | userAnalyticsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: userAnalyticsUpdateManyWithWhereWithoutUserInput | userAnalyticsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: userAnalyticsScalarWhereInput | userAnalyticsScalarWhereInput[]
+  }
+
   export type imagesUncheckedUpdateManyWithoutUsersNestedInput = {
     create?: XOR<imagesCreateWithoutUsersInput, imagesUncheckedCreateWithoutUsersInput> | imagesCreateWithoutUsersInput[] | imagesUncheckedCreateWithoutUsersInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutUsersInput | imagesCreateOrConnectWithoutUsersInput[]
@@ -12699,6 +15611,20 @@ export namespace Prisma {
     update?: shopReviewsUpdateWithWhereUniqueWithoutUserInput | shopReviewsUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: shopReviewsUpdateManyWithWhereWithoutUserInput | shopReviewsUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: shopReviewsScalarWhereInput | shopReviewsScalarWhereInput[]
+  }
+
+  export type userAnalyticsUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput> | userAnalyticsCreateWithoutUserInput[] | userAnalyticsUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: userAnalyticsCreateOrConnectWithoutUserInput | userAnalyticsCreateOrConnectWithoutUserInput[]
+    upsert?: userAnalyticsUpsertWithWhereUniqueWithoutUserInput | userAnalyticsUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: userAnalyticsCreateManyUserInputEnvelope
+    set?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    disconnect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    delete?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    connect?: userAnalyticsWhereUniqueInput | userAnalyticsWhereUniqueInput[]
+    update?: userAnalyticsUpdateWithWhereUniqueWithoutUserInput | userAnalyticsUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: userAnalyticsUpdateManyWithWhereWithoutUserInput | userAnalyticsUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: userAnalyticsScalarWhereInput | userAnalyticsScalarWhereInput[]
   }
 
   export type usersCreateNestedOneWithoutShopReviewsInput = {
@@ -12770,6 +15696,13 @@ export namespace Prisma {
     connect?: productsWhereUniqueInput | productsWhereUniqueInput[]
   }
 
+  export type productAnalyticsCreateNestedManyWithoutShopInput = {
+    create?: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput> | productAnalyticsCreateWithoutShopInput[] | productAnalyticsUncheckedCreateWithoutShopInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutShopInput | productAnalyticsCreateOrConnectWithoutShopInput[]
+    createMany?: productAnalyticsCreateManyShopInputEnvelope
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+  }
+
   export type imagesUncheckedCreateNestedManyWithoutShopsInput = {
     create?: XOR<imagesCreateWithoutShopsInput, imagesUncheckedCreateWithoutShopsInput> | imagesCreateWithoutShopsInput[] | imagesUncheckedCreateWithoutShopsInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutShopsInput | imagesCreateOrConnectWithoutShopsInput[]
@@ -12789,6 +15722,13 @@ export namespace Prisma {
     connectOrCreate?: productsCreateOrConnectWithoutShopInput | productsCreateOrConnectWithoutShopInput[]
     createMany?: productsCreateManyShopInputEnvelope
     connect?: productsWhereUniqueInput | productsWhereUniqueInput[]
+  }
+
+  export type productAnalyticsUncheckedCreateNestedManyWithoutShopInput = {
+    create?: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput> | productAnalyticsCreateWithoutShopInput[] | productAnalyticsUncheckedCreateWithoutShopInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutShopInput | productAnalyticsCreateOrConnectWithoutShopInput[]
+    createMany?: productAnalyticsCreateManyShopInputEnvelope
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
   }
 
   export type shopsUpdatesocialLinksInput = {
@@ -12846,6 +15786,20 @@ export namespace Prisma {
     deleteMany?: productsScalarWhereInput | productsScalarWhereInput[]
   }
 
+  export type productAnalyticsUpdateManyWithoutShopNestedInput = {
+    create?: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput> | productAnalyticsCreateWithoutShopInput[] | productAnalyticsUncheckedCreateWithoutShopInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutShopInput | productAnalyticsCreateOrConnectWithoutShopInput[]
+    upsert?: productAnalyticsUpsertWithWhereUniqueWithoutShopInput | productAnalyticsUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: productAnalyticsCreateManyShopInputEnvelope
+    set?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    disconnect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    delete?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    update?: productAnalyticsUpdateWithWhereUniqueWithoutShopInput | productAnalyticsUpdateWithWhereUniqueWithoutShopInput[]
+    updateMany?: productAnalyticsUpdateManyWithWhereWithoutShopInput | productAnalyticsUpdateManyWithWhereWithoutShopInput[]
+    deleteMany?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
+  }
+
   export type imagesUncheckedUpdateManyWithoutShopsNestedInput = {
     create?: XOR<imagesCreateWithoutShopsInput, imagesUncheckedCreateWithoutShopsInput> | imagesCreateWithoutShopsInput[] | imagesUncheckedCreateWithoutShopsInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutShopsInput | imagesCreateOrConnectWithoutShopsInput[]
@@ -12886,6 +15840,20 @@ export namespace Prisma {
     update?: productsUpdateWithWhereUniqueWithoutShopInput | productsUpdateWithWhereUniqueWithoutShopInput[]
     updateMany?: productsUpdateManyWithWhereWithoutShopInput | productsUpdateManyWithWhereWithoutShopInput[]
     deleteMany?: productsScalarWhereInput | productsScalarWhereInput[]
+  }
+
+  export type productAnalyticsUncheckedUpdateManyWithoutShopNestedInput = {
+    create?: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput> | productAnalyticsCreateWithoutShopInput[] | productAnalyticsUncheckedCreateWithoutShopInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutShopInput | productAnalyticsCreateOrConnectWithoutShopInput[]
+    upsert?: productAnalyticsUpsertWithWhereUniqueWithoutShopInput | productAnalyticsUpsertWithWhereUniqueWithoutShopInput[]
+    createMany?: productAnalyticsCreateManyShopInputEnvelope
+    set?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    disconnect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    delete?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    update?: productAnalyticsUpdateWithWhereUniqueWithoutShopInput | productAnalyticsUpdateWithWhereUniqueWithoutShopInput[]
+    updateMany?: productAnalyticsUpdateManyWithWhereWithoutShopInput | productAnalyticsUpdateManyWithWhereWithoutShopInput[]
+    deleteMany?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
   }
 
   export type shopsCreateNestedOneWithoutSellersInput = {
@@ -12958,11 +15926,25 @@ export namespace Prisma {
     connect?: shopsWhereUniqueInput
   }
 
+  export type productAnalyticsCreateNestedManyWithoutProductInput = {
+    create?: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput> | productAnalyticsCreateWithoutProductInput[] | productAnalyticsUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutProductInput | productAnalyticsCreateOrConnectWithoutProductInput[]
+    createMany?: productAnalyticsCreateManyProductInputEnvelope
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+  }
+
   export type imagesUncheckedCreateNestedManyWithoutProductsInput = {
     create?: XOR<imagesCreateWithoutProductsInput, imagesUncheckedCreateWithoutProductsInput> | imagesCreateWithoutProductsInput[] | imagesUncheckedCreateWithoutProductsInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutProductsInput | imagesCreateOrConnectWithoutProductsInput[]
     createMany?: imagesCreateManyProductsInputEnvelope
     connect?: imagesWhereUniqueInput | imagesWhereUniqueInput[]
+  }
+
+  export type productAnalyticsUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput> | productAnalyticsCreateWithoutProductInput[] | productAnalyticsUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutProductInput | productAnalyticsCreateOrConnectWithoutProductInput[]
+    createMany?: productAnalyticsCreateManyProductInputEnvelope
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
   }
 
   export type productsUpdatetagsInput = {
@@ -13029,6 +16011,20 @@ export namespace Prisma {
     update?: XOR<XOR<shopsUpdateToOneWithWhereWithoutProductsInput, shopsUpdateWithoutProductsInput>, shopsUncheckedUpdateWithoutProductsInput>
   }
 
+  export type productAnalyticsUpdateManyWithoutProductNestedInput = {
+    create?: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput> | productAnalyticsCreateWithoutProductInput[] | productAnalyticsUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutProductInput | productAnalyticsCreateOrConnectWithoutProductInput[]
+    upsert?: productAnalyticsUpsertWithWhereUniqueWithoutProductInput | productAnalyticsUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: productAnalyticsCreateManyProductInputEnvelope
+    set?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    disconnect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    delete?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    update?: productAnalyticsUpdateWithWhereUniqueWithoutProductInput | productAnalyticsUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: productAnalyticsUpdateManyWithWhereWithoutProductInput | productAnalyticsUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
+  }
+
   export type imagesUncheckedUpdateManyWithoutProductsNestedInput = {
     create?: XOR<imagesCreateWithoutProductsInput, imagesUncheckedCreateWithoutProductsInput> | imagesCreateWithoutProductsInput[] | imagesUncheckedCreateWithoutProductsInput[]
     connectOrCreate?: imagesCreateOrConnectWithoutProductsInput | imagesCreateOrConnectWithoutProductsInput[]
@@ -13041,6 +16037,62 @@ export namespace Prisma {
     update?: imagesUpdateWithWhereUniqueWithoutProductsInput | imagesUpdateWithWhereUniqueWithoutProductsInput[]
     updateMany?: imagesUpdateManyWithWhereWithoutProductsInput | imagesUpdateManyWithWhereWithoutProductsInput[]
     deleteMany?: imagesScalarWhereInput | imagesScalarWhereInput[]
+  }
+
+  export type productAnalyticsUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput> | productAnalyticsCreateWithoutProductInput[] | productAnalyticsUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: productAnalyticsCreateOrConnectWithoutProductInput | productAnalyticsCreateOrConnectWithoutProductInput[]
+    upsert?: productAnalyticsUpsertWithWhereUniqueWithoutProductInput | productAnalyticsUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: productAnalyticsCreateManyProductInputEnvelope
+    set?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    disconnect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    delete?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    connect?: productAnalyticsWhereUniqueInput | productAnalyticsWhereUniqueInput[]
+    update?: productAnalyticsUpdateWithWhereUniqueWithoutProductInput | productAnalyticsUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: productAnalyticsUpdateManyWithWhereWithoutProductInput | productAnalyticsUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
+  }
+
+  export type productsCreateNestedOneWithoutProductAnalyticsInput = {
+    create?: XOR<productsCreateWithoutProductAnalyticsInput, productsUncheckedCreateWithoutProductAnalyticsInput>
+    connectOrCreate?: productsCreateOrConnectWithoutProductAnalyticsInput
+    connect?: productsWhereUniqueInput
+  }
+
+  export type shopsCreateNestedOneWithoutProductAnalyticsInput = {
+    create?: XOR<shopsCreateWithoutProductAnalyticsInput, shopsUncheckedCreateWithoutProductAnalyticsInput>
+    connectOrCreate?: shopsCreateOrConnectWithoutProductAnalyticsInput
+    connect?: shopsWhereUniqueInput
+  }
+
+  export type productsUpdateOneRequiredWithoutProductAnalyticsNestedInput = {
+    create?: XOR<productsCreateWithoutProductAnalyticsInput, productsUncheckedCreateWithoutProductAnalyticsInput>
+    connectOrCreate?: productsCreateOrConnectWithoutProductAnalyticsInput
+    upsert?: productsUpsertWithoutProductAnalyticsInput
+    connect?: productsWhereUniqueInput
+    update?: XOR<XOR<productsUpdateToOneWithWhereWithoutProductAnalyticsInput, productsUpdateWithoutProductAnalyticsInput>, productsUncheckedUpdateWithoutProductAnalyticsInput>
+  }
+
+  export type shopsUpdateOneRequiredWithoutProductAnalyticsNestedInput = {
+    create?: XOR<shopsCreateWithoutProductAnalyticsInput, shopsUncheckedCreateWithoutProductAnalyticsInput>
+    connectOrCreate?: shopsCreateOrConnectWithoutProductAnalyticsInput
+    upsert?: shopsUpsertWithoutProductAnalyticsInput
+    connect?: shopsWhereUniqueInput
+    update?: XOR<XOR<shopsUpdateToOneWithWhereWithoutProductAnalyticsInput, shopsUpdateWithoutProductAnalyticsInput>, shopsUncheckedUpdateWithoutProductAnalyticsInput>
+  }
+
+  export type usersCreateNestedOneWithoutUserAnalyticsInput = {
+    create?: XOR<usersCreateWithoutUserAnalyticsInput, usersUncheckedCreateWithoutUserAnalyticsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutUserAnalyticsInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type usersUpdateOneRequiredWithoutUserAnalyticsNestedInput = {
+    create?: XOR<usersCreateWithoutUserAnalyticsInput, usersUncheckedCreateWithoutUserAnalyticsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutUserAnalyticsInput
+    upsert?: usersUpsertWithoutUserAnalyticsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutUserAnalyticsInput, usersUpdateWithoutUserAnalyticsInput>, usersUncheckedUpdateWithoutUserAnalyticsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -13289,6 +16341,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     shopReviews?: shopReviewsCreateNestedManyWithoutUserInput
+    userAnalytics?: userAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutAvatarInput = {
@@ -13300,6 +16353,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     shopReviews?: shopReviewsUncheckedCreateNestedManyWithoutUserInput
+    userAnalytics?: userAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutAvatarInput = {
@@ -13323,6 +16377,7 @@ export namespace Prisma {
     reviews?: shopReviewsCreateNestedManyWithoutShopsInput
     sellers: sellersCreateNestedOneWithoutShopInput
     products?: productsCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutShopInput
   }
 
   export type shopsUncheckedCreateWithoutAvatarInput = {
@@ -13341,6 +16396,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     reviews?: shopReviewsUncheckedCreateNestedManyWithoutShopsInput
     products?: productsUncheckedCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutShopInput
   }
 
   export type shopsCreateOrConnectWithoutAvatarInput = {
@@ -13379,6 +16435,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     Shop: shopsCreateNestedOneWithoutProductsInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutProductInput
   }
 
   export type productsUncheckedCreateWithoutImagesInput = {
@@ -13412,6 +16469,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     shopId: string
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type productsCreateOrConnectWithoutImagesInput = {
@@ -13438,6 +16496,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     shopReviews?: shopReviewsUpdateManyWithoutUserNestedInput
+    userAnalytics?: userAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutAvatarInput = {
@@ -13448,6 +16507,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     shopReviews?: shopReviewsUncheckedUpdateManyWithoutUserNestedInput
+    userAnalytics?: userAnalyticsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type shopsUpsertWithoutAvatarInput = {
@@ -13476,6 +16536,7 @@ export namespace Prisma {
     reviews?: shopReviewsUpdateManyWithoutShopsNestedInput
     sellers?: sellersUpdateOneRequiredWithoutShopNestedInput
     products?: productsUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutShopNestedInput
   }
 
   export type shopsUncheckedUpdateWithoutAvatarInput = {
@@ -13493,6 +16554,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews?: shopReviewsUncheckedUpdateManyWithoutShopsNestedInput
     products?: productsUncheckedUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutShopNestedInput
   }
 
   export type productsUpsertWithoutImagesInput = {
@@ -13536,6 +16598,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Shop?: shopsUpdateOneRequiredWithoutProductsNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutProductNestedInput
   }
 
   export type productsUncheckedUpdateWithoutImagesInput = {
@@ -13568,6 +16631,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     shopId?: StringFieldUpdateOperationsInput | string
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type imagesCreateWithoutUsersInput = {
@@ -13620,6 +16684,37 @@ export namespace Prisma {
 
   export type shopReviewsCreateManyUserInputEnvelope = {
     data: shopReviewsCreateManyUserInput | shopReviewsCreateManyUserInput[]
+  }
+
+  export type userAnalyticsCreateWithoutUserInput = {
+    id?: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type userAnalyticsUncheckedCreateWithoutUserInput = {
+    id?: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type userAnalyticsCreateOrConnectWithoutUserInput = {
+    where: userAnalyticsWhereUniqueInput
+    create: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput>
+  }
+
+  export type userAnalyticsCreateManyUserInputEnvelope = {
+    data: userAnalyticsCreateManyUserInput | userAnalyticsCreateManyUserInput[]
   }
 
   export type imagesUpsertWithWhereUniqueWithoutUsersInput = {
@@ -13679,6 +16774,37 @@ export namespace Prisma {
     shopsId?: StringNullableFilter<"shopReviews"> | string | null
   }
 
+  export type userAnalyticsUpsertWithWhereUniqueWithoutUserInput = {
+    where: userAnalyticsWhereUniqueInput
+    update: XOR<userAnalyticsUpdateWithoutUserInput, userAnalyticsUncheckedUpdateWithoutUserInput>
+    create: XOR<userAnalyticsCreateWithoutUserInput, userAnalyticsUncheckedCreateWithoutUserInput>
+  }
+
+  export type userAnalyticsUpdateWithWhereUniqueWithoutUserInput = {
+    where: userAnalyticsWhereUniqueInput
+    data: XOR<userAnalyticsUpdateWithoutUserInput, userAnalyticsUncheckedUpdateWithoutUserInput>
+  }
+
+  export type userAnalyticsUpdateManyWithWhereWithoutUserInput = {
+    where: userAnalyticsScalarWhereInput
+    data: XOR<userAnalyticsUpdateManyMutationInput, userAnalyticsUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type userAnalyticsScalarWhereInput = {
+    AND?: userAnalyticsScalarWhereInput | userAnalyticsScalarWhereInput[]
+    OR?: userAnalyticsScalarWhereInput[]
+    NOT?: userAnalyticsScalarWhereInput | userAnalyticsScalarWhereInput[]
+    id?: StringFilter<"userAnalytics"> | string
+    userId?: StringFilter<"userAnalytics"> | string
+    lastVisited?: DateTimeFilter<"userAnalytics"> | Date | string
+    country?: StringNullableFilter<"userAnalytics"> | string | null
+    city?: StringNullableFilter<"userAnalytics"> | string | null
+    device?: StringNullableFilter<"userAnalytics"> | string | null
+    actions?: JsonFilter<"userAnalytics">
+    createdAt?: DateTimeFilter<"userAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"userAnalytics"> | Date | string
+  }
+
   export type usersCreateWithoutShopReviewsInput = {
     id?: string
     name: string
@@ -13688,6 +16814,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     avatar?: imagesCreateNestedManyWithoutUsersInput
+    userAnalytics?: userAnalyticsCreateNestedManyWithoutUserInput
   }
 
   export type usersUncheckedCreateWithoutShopReviewsInput = {
@@ -13699,6 +16826,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     avatar?: imagesUncheckedCreateNestedManyWithoutUsersInput
+    userAnalytics?: userAnalyticsUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type usersCreateOrConnectWithoutShopReviewsInput = {
@@ -13722,6 +16850,7 @@ export namespace Prisma {
     avatar?: imagesCreateNestedManyWithoutShopsInput
     sellers: sellersCreateNestedOneWithoutShopInput
     products?: productsCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutShopInput
   }
 
   export type shopsUncheckedCreateWithoutReviewsInput = {
@@ -13740,6 +16869,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     avatar?: imagesUncheckedCreateNestedManyWithoutShopsInput
     products?: productsUncheckedCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutShopInput
   }
 
   export type shopsCreateOrConnectWithoutReviewsInput = {
@@ -13766,6 +16896,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUpdateManyWithoutUsersNestedInput
+    userAnalytics?: userAnalyticsUpdateManyWithoutUserNestedInput
   }
 
   export type usersUncheckedUpdateWithoutShopReviewsInput = {
@@ -13776,6 +16907,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUncheckedUpdateManyWithoutUsersNestedInput
+    userAnalytics?: userAnalyticsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type shopsUpsertWithoutReviewsInput = {
@@ -13804,6 +16936,7 @@ export namespace Prisma {
     avatar?: imagesUpdateManyWithoutShopsNestedInput
     sellers?: sellersUpdateOneRequiredWithoutShopNestedInput
     products?: productsUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutShopNestedInput
   }
 
   export type shopsUncheckedUpdateWithoutReviewsInput = {
@@ -13821,6 +16954,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUncheckedUpdateManyWithoutShopsNestedInput
     products?: productsUncheckedUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutShopNestedInput
   }
 
   export type imagesCreateWithoutShopsInput = {
@@ -13935,6 +17069,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     images?: imagesCreateNestedManyWithoutProductsInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutProductInput
   }
 
   export type productsUncheckedCreateWithoutShopInput = {
@@ -13968,6 +17103,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     images?: imagesUncheckedCreateNestedManyWithoutProductsInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type productsCreateOrConnectWithoutShopInput = {
@@ -13977,6 +17113,39 @@ export namespace Prisma {
 
   export type productsCreateManyShopInputEnvelope = {
     data: productsCreateManyShopInput | productsCreateManyShopInput[]
+  }
+
+  export type productAnalyticsCreateWithoutShopInput = {
+    id?: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product: productsCreateNestedOneWithoutProductAnalyticsInput
+  }
+
+  export type productAnalyticsUncheckedCreateWithoutShopInput = {
+    id?: string
+    productId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type productAnalyticsCreateOrConnectWithoutShopInput = {
+    where: productAnalyticsWhereUniqueInput
+    create: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput>
+  }
+
+  export type productAnalyticsCreateManyShopInputEnvelope = {
+    data: productAnalyticsCreateManyShopInput | productAnalyticsCreateManyShopInput[]
   }
 
   export type imagesUpsertWithWhereUniqueWithoutShopsInput = {
@@ -14096,6 +17265,38 @@ export namespace Prisma {
     shopId?: StringFilter<"products"> | string
   }
 
+  export type productAnalyticsUpsertWithWhereUniqueWithoutShopInput = {
+    where: productAnalyticsWhereUniqueInput
+    update: XOR<productAnalyticsUpdateWithoutShopInput, productAnalyticsUncheckedUpdateWithoutShopInput>
+    create: XOR<productAnalyticsCreateWithoutShopInput, productAnalyticsUncheckedCreateWithoutShopInput>
+  }
+
+  export type productAnalyticsUpdateWithWhereUniqueWithoutShopInput = {
+    where: productAnalyticsWhereUniqueInput
+    data: XOR<productAnalyticsUpdateWithoutShopInput, productAnalyticsUncheckedUpdateWithoutShopInput>
+  }
+
+  export type productAnalyticsUpdateManyWithWhereWithoutShopInput = {
+    where: productAnalyticsScalarWhereInput
+    data: XOR<productAnalyticsUpdateManyMutationInput, productAnalyticsUncheckedUpdateManyWithoutShopInput>
+  }
+
+  export type productAnalyticsScalarWhereInput = {
+    AND?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
+    OR?: productAnalyticsScalarWhereInput[]
+    NOT?: productAnalyticsScalarWhereInput | productAnalyticsScalarWhereInput[]
+    id?: StringFilter<"productAnalytics"> | string
+    productId?: StringFilter<"productAnalytics"> | string
+    shopId?: StringFilter<"productAnalytics"> | string
+    views?: IntFilter<"productAnalytics"> | number
+    cartAdds?: IntFilter<"productAnalytics"> | number
+    wishListAdds?: IntFilter<"productAnalytics"> | number
+    purchases?: IntFilter<"productAnalytics"> | number
+    lastViewedAt?: DateTimeNullableFilter<"productAnalytics"> | Date | string | null
+    createdAt?: DateTimeFilter<"productAnalytics"> | Date | string
+    updatedAt?: DateTimeFilter<"productAnalytics"> | Date | string
+  }
+
   export type shopsCreateWithoutSellersInput = {
     id?: string
     name: string
@@ -14112,6 +17313,7 @@ export namespace Prisma {
     avatar?: imagesCreateNestedManyWithoutShopsInput
     reviews?: shopReviewsCreateNestedManyWithoutShopsInput
     products?: productsCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutShopInput
   }
 
   export type shopsUncheckedCreateWithoutSellersInput = {
@@ -14130,6 +17332,7 @@ export namespace Prisma {
     avatar?: imagesUncheckedCreateNestedManyWithoutShopsInput
     reviews?: shopReviewsUncheckedCreateNestedManyWithoutShopsInput
     products?: productsUncheckedCreateNestedManyWithoutShopInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutShopInput
   }
 
   export type shopsCreateOrConnectWithoutSellersInput = {
@@ -14163,6 +17366,7 @@ export namespace Prisma {
     avatar?: imagesUpdateManyWithoutShopsNestedInput
     reviews?: shopReviewsUpdateManyWithoutShopsNestedInput
     products?: productsUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutShopNestedInput
   }
 
   export type shopsUncheckedUpdateWithoutSellersInput = {
@@ -14180,6 +17384,7 @@ export namespace Prisma {
     avatar?: imagesUncheckedUpdateManyWithoutShopsNestedInput
     reviews?: shopReviewsUncheckedUpdateManyWithoutShopsNestedInput
     products?: productsUncheckedUpdateManyWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutShopNestedInput
   }
 
   export type imagesCreateWithoutProductsInput = {
@@ -14223,6 +17428,7 @@ export namespace Prisma {
     avatar?: imagesCreateNestedManyWithoutShopsInput
     reviews?: shopReviewsCreateNestedManyWithoutShopsInput
     sellers: sellersCreateNestedOneWithoutShopInput
+    productAnalytics?: productAnalyticsCreateNestedManyWithoutShopInput
   }
 
   export type shopsUncheckedCreateWithoutProductsInput = {
@@ -14241,11 +17447,45 @@ export namespace Prisma {
     updatedAt?: Date | string
     avatar?: imagesUncheckedCreateNestedManyWithoutShopsInput
     reviews?: shopReviewsUncheckedCreateNestedManyWithoutShopsInput
+    productAnalytics?: productAnalyticsUncheckedCreateNestedManyWithoutShopInput
   }
 
   export type shopsCreateOrConnectWithoutProductsInput = {
     where: shopsWhereUniqueInput
     create: XOR<shopsCreateWithoutProductsInput, shopsUncheckedCreateWithoutProductsInput>
+  }
+
+  export type productAnalyticsCreateWithoutProductInput = {
+    id?: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    shop: shopsCreateNestedOneWithoutProductAnalyticsInput
+  }
+
+  export type productAnalyticsUncheckedCreateWithoutProductInput = {
+    id?: string
+    shopId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type productAnalyticsCreateOrConnectWithoutProductInput = {
+    where: productAnalyticsWhereUniqueInput
+    create: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput>
+  }
+
+  export type productAnalyticsCreateManyProductInputEnvelope = {
+    data: productAnalyticsCreateManyProductInput | productAnalyticsCreateManyProductInput[]
   }
 
   export type imagesUpsertWithWhereUniqueWithoutProductsInput = {
@@ -14290,6 +17530,7 @@ export namespace Prisma {
     avatar?: imagesUpdateManyWithoutShopsNestedInput
     reviews?: shopReviewsUpdateManyWithoutShopsNestedInput
     sellers?: sellersUpdateOneRequiredWithoutShopNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutShopNestedInput
   }
 
   export type shopsUncheckedUpdateWithoutProductsInput = {
@@ -14307,6 +17548,325 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     avatar?: imagesUncheckedUpdateManyWithoutShopsNestedInput
     reviews?: shopReviewsUncheckedUpdateManyWithoutShopsNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutShopNestedInput
+  }
+
+  export type productAnalyticsUpsertWithWhereUniqueWithoutProductInput = {
+    where: productAnalyticsWhereUniqueInput
+    update: XOR<productAnalyticsUpdateWithoutProductInput, productAnalyticsUncheckedUpdateWithoutProductInput>
+    create: XOR<productAnalyticsCreateWithoutProductInput, productAnalyticsUncheckedCreateWithoutProductInput>
+  }
+
+  export type productAnalyticsUpdateWithWhereUniqueWithoutProductInput = {
+    where: productAnalyticsWhereUniqueInput
+    data: XOR<productAnalyticsUpdateWithoutProductInput, productAnalyticsUncheckedUpdateWithoutProductInput>
+  }
+
+  export type productAnalyticsUpdateManyWithWhereWithoutProductInput = {
+    where: productAnalyticsScalarWhereInput
+    data: XOR<productAnalyticsUpdateManyMutationInput, productAnalyticsUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type productsCreateWithoutProductAnalyticsInput = {
+    id?: string
+    title: string
+    slug: string
+    category: string
+    subCategory: string
+    short_description: string
+    detailed_description: string
+    video_url?: string | null
+    tags?: productsCreatetagsInput | string[]
+    brand?: string | null
+    colors?: productsCreatecolorsInput | string[]
+    sizes?: productsCreatesizesInput | string[]
+    starting_date?: Date | string | null
+    ending_date?: Date | string | null
+    stock: number
+    sale_price: number
+    regular_price: number
+    ratings?: number
+    warranty?: string | null
+    custom_specifications?: InputJsonValue | null
+    custom_properties: InputJsonValue
+    isDeleted?: boolean | null
+    totalSales?: number
+    cashOnDelivery?: string | null
+    discount_codes?: productsCreatediscount_codesInput | string[]
+    status?: $Enums.productStatus
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: imagesCreateNestedManyWithoutProductsInput
+    Shop: shopsCreateNestedOneWithoutProductsInput
+  }
+
+  export type productsUncheckedCreateWithoutProductAnalyticsInput = {
+    id?: string
+    title: string
+    slug: string
+    category: string
+    subCategory: string
+    short_description: string
+    detailed_description: string
+    video_url?: string | null
+    tags?: productsCreatetagsInput | string[]
+    brand?: string | null
+    colors?: productsCreatecolorsInput | string[]
+    sizes?: productsCreatesizesInput | string[]
+    starting_date?: Date | string | null
+    ending_date?: Date | string | null
+    stock: number
+    sale_price: number
+    regular_price: number
+    ratings?: number
+    warranty?: string | null
+    custom_specifications?: InputJsonValue | null
+    custom_properties: InputJsonValue
+    isDeleted?: boolean | null
+    totalSales?: number
+    cashOnDelivery?: string | null
+    discount_codes?: productsCreatediscount_codesInput | string[]
+    status?: $Enums.productStatus
+    deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    shopId: string
+    images?: imagesUncheckedCreateNestedManyWithoutProductsInput
+  }
+
+  export type productsCreateOrConnectWithoutProductAnalyticsInput = {
+    where: productsWhereUniqueInput
+    create: XOR<productsCreateWithoutProductAnalyticsInput, productsUncheckedCreateWithoutProductAnalyticsInput>
+  }
+
+  export type shopsCreateWithoutProductAnalyticsInput = {
+    id?: string
+    name: string
+    bio?: string | null
+    category: string
+    coverBanner?: string | null
+    address: string
+    opening_hours?: string | null
+    website?: string | null
+    socialLinks?: shopsCreatesocialLinksInput | InputJsonValue[]
+    ratings?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: imagesCreateNestedManyWithoutShopsInput
+    reviews?: shopReviewsCreateNestedManyWithoutShopsInput
+    sellers: sellersCreateNestedOneWithoutShopInput
+    products?: productsCreateNestedManyWithoutShopInput
+  }
+
+  export type shopsUncheckedCreateWithoutProductAnalyticsInput = {
+    id?: string
+    name: string
+    bio?: string | null
+    category: string
+    coverBanner?: string | null
+    address: string
+    opening_hours?: string | null
+    website?: string | null
+    socialLinks?: shopsCreatesocialLinksInput | InputJsonValue[]
+    ratings?: number
+    sellerId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: imagesUncheckedCreateNestedManyWithoutShopsInput
+    reviews?: shopReviewsUncheckedCreateNestedManyWithoutShopsInput
+    products?: productsUncheckedCreateNestedManyWithoutShopInput
+  }
+
+  export type shopsCreateOrConnectWithoutProductAnalyticsInput = {
+    where: shopsWhereUniqueInput
+    create: XOR<shopsCreateWithoutProductAnalyticsInput, shopsUncheckedCreateWithoutProductAnalyticsInput>
+  }
+
+  export type productsUpsertWithoutProductAnalyticsInput = {
+    update: XOR<productsUpdateWithoutProductAnalyticsInput, productsUncheckedUpdateWithoutProductAnalyticsInput>
+    create: XOR<productsCreateWithoutProductAnalyticsInput, productsUncheckedCreateWithoutProductAnalyticsInput>
+    where?: productsWhereInput
+  }
+
+  export type productsUpdateToOneWithWhereWithoutProductAnalyticsInput = {
+    where?: productsWhereInput
+    data: XOR<productsUpdateWithoutProductAnalyticsInput, productsUncheckedUpdateWithoutProductAnalyticsInput>
+  }
+
+  export type productsUpdateWithoutProductAnalyticsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    short_description?: StringFieldUpdateOperationsInput | string
+    detailed_description?: StringFieldUpdateOperationsInput | string
+    video_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: productsUpdatetagsInput | string[]
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    colors?: productsUpdatecolorsInput | string[]
+    sizes?: productsUpdatesizesInput | string[]
+    starting_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ending_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    sale_price?: FloatFieldUpdateOperationsInput | number
+    regular_price?: FloatFieldUpdateOperationsInput | number
+    ratings?: FloatFieldUpdateOperationsInput | number
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    custom_specifications?: InputJsonValue | InputJsonValue | null
+    custom_properties?: InputJsonValue | InputJsonValue
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    totalSales?: IntFieldUpdateOperationsInput | number
+    cashOnDelivery?: NullableStringFieldUpdateOperationsInput | string | null
+    discount_codes?: productsUpdatediscount_codesInput | string[]
+    status?: EnumproductStatusFieldUpdateOperationsInput | $Enums.productStatus
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: imagesUpdateManyWithoutProductsNestedInput
+    Shop?: shopsUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type productsUncheckedUpdateWithoutProductAnalyticsInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    short_description?: StringFieldUpdateOperationsInput | string
+    detailed_description?: StringFieldUpdateOperationsInput | string
+    video_url?: NullableStringFieldUpdateOperationsInput | string | null
+    tags?: productsUpdatetagsInput | string[]
+    brand?: NullableStringFieldUpdateOperationsInput | string | null
+    colors?: productsUpdatecolorsInput | string[]
+    sizes?: productsUpdatesizesInput | string[]
+    starting_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ending_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stock?: IntFieldUpdateOperationsInput | number
+    sale_price?: FloatFieldUpdateOperationsInput | number
+    regular_price?: FloatFieldUpdateOperationsInput | number
+    ratings?: FloatFieldUpdateOperationsInput | number
+    warranty?: NullableStringFieldUpdateOperationsInput | string | null
+    custom_specifications?: InputJsonValue | InputJsonValue | null
+    custom_properties?: InputJsonValue | InputJsonValue
+    isDeleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    totalSales?: IntFieldUpdateOperationsInput | number
+    cashOnDelivery?: NullableStringFieldUpdateOperationsInput | string | null
+    discount_codes?: productsUpdatediscount_codesInput | string[]
+    status?: EnumproductStatusFieldUpdateOperationsInput | $Enums.productStatus
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shopId?: StringFieldUpdateOperationsInput | string
+    images?: imagesUncheckedUpdateManyWithoutProductsNestedInput
+  }
+
+  export type shopsUpsertWithoutProductAnalyticsInput = {
+    update: XOR<shopsUpdateWithoutProductAnalyticsInput, shopsUncheckedUpdateWithoutProductAnalyticsInput>
+    create: XOR<shopsCreateWithoutProductAnalyticsInput, shopsUncheckedCreateWithoutProductAnalyticsInput>
+    where?: shopsWhereInput
+  }
+
+  export type shopsUpdateToOneWithWhereWithoutProductAnalyticsInput = {
+    where?: shopsWhereInput
+    data: XOR<shopsUpdateWithoutProductAnalyticsInput, shopsUncheckedUpdateWithoutProductAnalyticsInput>
+  }
+
+  export type shopsUpdateWithoutProductAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    coverBanner?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    opening_hours?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: shopsUpdatesocialLinksInput | InputJsonValue[]
+    ratings?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: imagesUpdateManyWithoutShopsNestedInput
+    reviews?: shopReviewsUpdateManyWithoutShopsNestedInput
+    sellers?: sellersUpdateOneRequiredWithoutShopNestedInput
+    products?: productsUpdateManyWithoutShopNestedInput
+  }
+
+  export type shopsUncheckedUpdateWithoutProductAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    category?: StringFieldUpdateOperationsInput | string
+    coverBanner?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: StringFieldUpdateOperationsInput | string
+    opening_hours?: NullableStringFieldUpdateOperationsInput | string | null
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: shopsUpdatesocialLinksInput | InputJsonValue[]
+    ratings?: FloatFieldUpdateOperationsInput | number
+    sellerId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: imagesUncheckedUpdateManyWithoutShopsNestedInput
+    reviews?: shopReviewsUncheckedUpdateManyWithoutShopsNestedInput
+    products?: productsUncheckedUpdateManyWithoutShopNestedInput
+  }
+
+  export type usersCreateWithoutUserAnalyticsInput = {
+    id?: string
+    name: string
+    email: string
+    password?: string | null
+    following?: usersCreatefollowingInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: imagesCreateNestedManyWithoutUsersInput
+    shopReviews?: shopReviewsCreateNestedManyWithoutUserInput
+  }
+
+  export type usersUncheckedCreateWithoutUserAnalyticsInput = {
+    id?: string
+    name: string
+    email: string
+    password?: string | null
+    following?: usersCreatefollowingInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    avatar?: imagesUncheckedCreateNestedManyWithoutUsersInput
+    shopReviews?: shopReviewsUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type usersCreateOrConnectWithoutUserAnalyticsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutUserAnalyticsInput, usersUncheckedCreateWithoutUserAnalyticsInput>
+  }
+
+  export type usersUpsertWithoutUserAnalyticsInput = {
+    update: XOR<usersUpdateWithoutUserAnalyticsInput, usersUncheckedUpdateWithoutUserAnalyticsInput>
+    create: XOR<usersCreateWithoutUserAnalyticsInput, usersUncheckedCreateWithoutUserAnalyticsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutUserAnalyticsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutUserAnalyticsInput, usersUncheckedUpdateWithoutUserAnalyticsInput>
+  }
+
+  export type usersUpdateWithoutUserAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    following?: usersUpdatefollowingInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: imagesUpdateManyWithoutUsersNestedInput
+    shopReviews?: shopReviewsUpdateManyWithoutUserNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutUserAnalyticsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    following?: usersUpdatefollowingInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    avatar?: imagesUncheckedUpdateManyWithoutUsersNestedInput
+    shopReviews?: shopReviewsUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type imagesCreateManyUsersInput = {
@@ -14324,6 +17884,17 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     shopsId?: string | null
+  }
+
+  export type userAnalyticsCreateManyUserInput = {
+    id?: string
+    lastVisited: Date | string
+    country?: string | null
+    city?: string | null
+    device?: string | null
+    actions: InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type imagesUpdateWithoutUsersInput = {
@@ -14371,6 +17942,36 @@ export namespace Prisma {
     shopsId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type userAnalyticsUpdateWithoutUserInput = {
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userAnalyticsUncheckedUpdateWithoutUserInput = {
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type userAnalyticsUncheckedUpdateManyWithoutUserInput = {
+    lastVisited?: DateTimeFieldUpdateOperationsInput | Date | string
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    device?: NullableStringFieldUpdateOperationsInput | string | null
+    actions?: InputJsonValue | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type imagesCreateManyShopsInput = {
     id?: string
     file_id: string
@@ -14416,6 +18017,18 @@ export namespace Prisma {
     discount_codes?: productsCreatediscount_codesInput | string[]
     status?: $Enums.productStatus
     deletedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type productAnalyticsCreateManyShopInput = {
+    id?: string
+    productId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14495,6 +18108,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: imagesUpdateManyWithoutProductsNestedInput
+    productAnalytics?: productAnalyticsUpdateManyWithoutProductNestedInput
   }
 
   export type productsUncheckedUpdateWithoutShopInput = {
@@ -14527,6 +18141,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     images?: imagesUncheckedUpdateManyWithoutProductsNestedInput
+    productAnalytics?: productAnalyticsUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type productsUncheckedUpdateManyWithoutShopInput = {
@@ -14560,12 +18175,57 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type productAnalyticsUpdateWithoutShopInput = {
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: productsUpdateOneRequiredWithoutProductAnalyticsNestedInput
+  }
+
+  export type productAnalyticsUncheckedUpdateWithoutShopInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type productAnalyticsUncheckedUpdateManyWithoutShopInput = {
+    productId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type imagesCreateManyProductsInput = {
     id?: string
     file_id: string
     url: string
     userId?: string | null
     shopId?: string | null
+  }
+
+  export type productAnalyticsCreateManyProductInput = {
+    id?: string
+    shopId: string
+    views?: number
+    cartAdds?: number
+    wishListAdds?: number
+    purchases?: number
+    lastViewedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type imagesUpdateWithoutProductsInput = {
@@ -14587,6 +18247,39 @@ export namespace Prisma {
     url?: StringFieldUpdateOperationsInput | string
     userId?: NullableStringFieldUpdateOperationsInput | string | null
     shopId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type productAnalyticsUpdateWithoutProductInput = {
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    shop?: shopsUpdateOneRequiredWithoutProductAnalyticsNestedInput
+  }
+
+  export type productAnalyticsUncheckedUpdateWithoutProductInput = {
+    shopId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type productAnalyticsUncheckedUpdateManyWithoutProductInput = {
+    shopId?: StringFieldUpdateOperationsInput | string
+    views?: IntFieldUpdateOperationsInput | number
+    cartAdds?: IntFieldUpdateOperationsInput | number
+    wishListAdds?: IntFieldUpdateOperationsInput | number
+    purchases?: IntFieldUpdateOperationsInput | number
+    lastViewedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

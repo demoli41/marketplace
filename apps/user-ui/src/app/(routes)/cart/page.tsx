@@ -247,7 +247,7 @@ const CartPage = () => {
                                     className='w-full flex items-center justify-center bg-[#2295FF] text-white gap-2 mt-4-4 py-3 rounded-md hover:bg-blue-600 transition-colors'
                                     disabled={loading}
                                 >
-                                    {loading && <Loader2 className='animate-spin w-5 h-5'/>}
+                                    {loading && <Loader2 className='animate-spin w-5 h-5' />}
                                     {loading ? 'Перенаправлення...' : 'Оформити замовлення'}
                                 </button>
                             </div>
