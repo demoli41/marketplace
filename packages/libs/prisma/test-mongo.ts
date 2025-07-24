@@ -1,5 +1,5 @@
 // libs/your-app/src/check-db.ts
-import {PrismaClient} from '../../../generated/prisma/client.js';
+import {PrismaClient} from '@prisma/client';
 
 // Потрібно, щоб завантажити .env, якщо ви його використовуєте
 import * as dotenv from 'dotenv';

@@ -63,18 +63,18 @@ export const useStore = create<Store>()(
                     return { cart: [...state.cart, { ...product, quantity: 1 }] };
                 });
 
-                // //send Kafka event
-                // if(user?.id && location && deviceInfo) {
-                //     sendKafkaEvent({
-                //         userId: user?.id,
-                //         productId: product?.id,
-                //         shopId: product?.shopId,
-                //         action: 'add_to_cart',
-                //         country: location?.country || 'Unknown',
-                //         city: location?.city || 'Unknown',
-                //         device: deviceInfo || 'Unknown',
-                //     })
-                // }
+                //send Kafka event
+                if(user?.id && location && deviceInfo) {
+                    sendKafkaEvent({
+                        userId: user?.id,
+                        productId: product?.id,
+                        shopId: product?.shopId,
+                        action: 'add_to_cart',
+                        country: location?.country || 'Unknown',
+                        city: location?.city || 'Unknown',
+                        device: deviceInfo || 'Unknown',
+                    })
+                }
             },
 
             // Remove product from cart
@@ -85,18 +85,18 @@ export const useStore = create<Store>()(
                     cart: state.cart?.filter((item) => item.id !== id),
                 }));
 
-                // //send Kafka event
-                // if(user?.id && location && deviceInfo && removeProduct) {
-                //     sendKafkaEvent({
-                //         userId: user?.id,
-                //         productId: removeProduct?.id,
-                //         shopId: removeProduct?.shopId,
-                //         action: 'remove_from_cart',
-                //         country: location?.country || 'Unknown',
-                //         city: location?.city || 'Unknown',
-                //         device: deviceInfo || 'Unknown',
-                //     })
-                // }
+                //send Kafka event
+                if(user?.id && location && deviceInfo && removeProduct) {
+                    sendKafkaEvent({
+                        userId: user?.id,
+                        productId: removeProduct?.id,
+                        shopId: removeProduct?.shopId,
+                        action: 'remove_from_cart',
+                        country: location?.country || 'Unknown',
+                        city: location?.city || 'Unknown',
+                        device: deviceInfo || 'Unknown',
+                    })
+                }
             },
 
             // Add product to wishlist
@@ -108,18 +108,18 @@ export const useStore = create<Store>()(
                     return { wishlist: [...state.wishlist, product] };
                 });
 
-                // //send Kafka event
-                // if(user?.id && location && deviceInfo) {
-                //     sendKafkaEvent({
-                //         userId: user?.id,
-                //         productId: product?.id,
-                //         shopId: product?.shopId,
-                //         action: 'add_to_wishlist',
-                //         country: location?.country || 'Unknown',
-                //         city: location?.city || 'Unknown',
-                //         device: deviceInfo || 'Unknown',
-                //     })
-                // }
+                //send Kafka event
+                if(user?.id && location && deviceInfo) {
+                    sendKafkaEvent({
+                        userId: user?.id,
+                        productId: product?.id,
+                        shopId: product?.shopId,
+                        action: 'add_to_wishlist',
+                        country: location?.country || 'Unknown',
+                        city: location?.city || 'Unknown',
+                        device: deviceInfo || 'Unknown',
+                    })
+                }
             },
 
             // Remove product from wishlist
@@ -130,18 +130,18 @@ export const useStore = create<Store>()(
                     wishlist: state.wishlist?.filter((item) => item.id !== id),
                 }));
 
-                // //send Kafka event
-                // if(user?.id && location && deviceInfo && removeProduct) {
-                //     sendKafkaEvent({
-                //         userId: user?.id,
-                //         productId: removeProduct?.id,
-                //         shopId: removeProduct?.shopId,
-                //         action: 'remove_from_wishlist',
-                //         country: location?.country || 'Unknown',
-                //         city: location?.city || 'Unknown',
-                //         device: deviceInfo || 'Unknown',
-                //     })
-                // }
+                //send Kafka event
+                if(user?.id && location && deviceInfo && removeProduct) {
+                    sendKafkaEvent({
+                        userId: user?.id,
+                        productId: removeProduct?.id,
+                        shopId: removeProduct?.shopId,
+                        action: 'remove_from_wishlist',
+                        country: location?.country || 'Unknown',
+                        city: location?.city || 'Unknown',
+                        device: deviceInfo || 'Unknown',
+                    })
+                }
                 
             }
         }),

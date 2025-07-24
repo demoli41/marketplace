@@ -1,4 +1,4 @@
-import {PrismaClient} from '../../../generated/prisma/client.js';
+import {PrismaClient} from '@prisma/client';
 //@prisma/client
 
 declare global {
@@ -12,4 +12,4 @@ const prisma=new PrismaClient();
 if(process.env.NODE_ENV==='production'){
     global.prismadb=prisma; }
 
-    export default prisma;
+export default prisma;

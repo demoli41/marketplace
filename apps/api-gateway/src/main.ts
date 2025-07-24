@@ -58,4 +58,7 @@ const server = app.listen(port, () => {
     console.error("Error initializing site config:", error);
   }
 });
-server.on('error', console.error);
+server.on('error', (err) => {
+  console.error("Server failed to start:", err);
+});
+

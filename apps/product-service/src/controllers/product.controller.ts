@@ -2,7 +2,7 @@ import { AuthError, NotFoundError, ValidationError } from "@packages/error-handl
 import { imagekit } from "@packages/libs/imagekit";
 import prisma from "@packages/libs/prisma";
 import { NextFunction, Request, Response } from "express";
-import { Prisma } from "../../../../generated/prisma/client";
+import { Prisma } from "@prisma/client";
 
 
 
@@ -439,3 +439,29 @@ export const getAllProducts = async (req: Request, res: Response, next: NextFunc
         next(error);
     }
 }
+
+// Get product details by slug
+export const getProductDetails = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const product = await prisma.products.findUnique({
+            where: {
+                slug: req.params.slug!,
+            },
+            include: {
+                images: true,
+                Shop: true,
+            },
+        });
+
+        if (!product) {
+            return next(new ValidationError("Product not found"));
+        }
+
+        return res.status(200).json({
+            success: true,
+            product,
+        });
+    } catch (error) {
+        return next(error);
+    }
+};
