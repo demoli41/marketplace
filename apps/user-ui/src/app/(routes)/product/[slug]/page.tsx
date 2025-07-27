@@ -1,15 +1,17 @@
 import ProductDetails from 'apps/user-ui/src/shared/modules/product/product-details';
 import axiosInstance from 'apps/user-ui/src/utils/axiosInstance';
 import { Metadata } from 'next';
-import React from 'react'
+import React,{cache} from 'react'
 
-async function fetchProductDetails(slug: string) {
+const fetchProductDetails=cache(async (slug: string) => {
     const response=await axiosInstance.get(`/product/api/get-product/${slug}`);
     return response.data.product;
-}
+});
 
 export async function generateMetadata({params}:{params:{slug:string}}):Promise<Metadata> {
-    const product = await fetchProductDetails(params.slug);
+    const {slug}=await params;
+
+    const product = await fetchProductDetails(slug);
     return {
         title: `${product?.title} - Marketplace`,
         description: product?.short_description || 'Product details page',
@@ -24,8 +26,9 @@ export async function generateMetadata({params}:{params:{slug:string}}):Promise<
 
 const Page = async ({params}:{params:{slug:string}}) => {
 
-    const productDetails=await fetchProductDetails(params?.slug);
-    console.log("Product Details:", productDetails);
+    const {slug}=await params;
+
+    const productDetails=await fetchProductDetails(slug);
 
   return <ProductDetails productDetails={productDetails} />;
 };
