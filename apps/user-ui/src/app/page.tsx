@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '../utils/axiosInstance';
 import ProductCard from '../shared/widgets/header/components/cards/product-card';
 
+
 const Page = () => {
   const {
     data: products,
@@ -22,7 +23,8 @@ const Page = () => {
   });
 
   const {
-    data: latestProducts
+    data: latestProducts,
+    isLoading: isLoadingLatest,
   } = useQuery({
     queryKey: ['latest-products'],
     queryFn: async () => {
@@ -31,6 +33,31 @@ const Page = () => {
     },
     staleTime: 1000 * 60 * 2, // 2 minutes
   });
+
+ /* const {
+    data: shops,
+    isLoading: shopsLoading,
+  } = useQuery({
+    queryKey: ['shops'],
+    queryFn: async () => {
+      const res = await axiosInstance.get('/product/api/top-shops');
+      return res.data.shops;
+    },
+    staleTime: 1000 * 60 * 2, // 2 minutes
+  });*/
+
+ /* const {
+    data: offers,
+    isLoading: offersLoading,
+  } = useQuery({
+    queryKey: ['offers'],
+    queryFn: async () => {
+      const res = await axiosInstance.get('/product/api/get-all-events?page=1&limit=10');
+      return res.data.offers;
+    },
+    staleTime: 1000 * 60 * 2, // 2 minutes
+  });}*/
+
 
 
 
@@ -57,6 +84,61 @@ const Page = () => {
             ))}
           </div>
         )}
+
+        {products?.length === 0 && (
+          <p className='text-center'>Товари не знайдено</p>
+        )}
+
+        {isLoading && (
+          <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-5'>
+            {Array.from({ length: 10 }).map((_, index) => (
+              <div key={index} className='h-[250px] bg-gray-300 animate-pulse rounded-xl' />
+            ))}
+          </div>
+        )}
+
+        <div className='my-8 block'>
+          <SectionTitle title="Нові товари" />
+        </div>
+        {!isLoadingLatest && !isError && (
+          <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-5'>
+            {latestProducts?.map((product: any) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+
+        {latestProducts?.length === 0 && (
+          <p className='text-center'>Товари не знайдено</p>
+        )}
+
+       {/* <div className='my-8 block'>
+          <SectionTitle title="Топ продавці" />
+        </div>*/}
+
+        {/*!shopsLoading && (
+          <div className='m-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-5'>
+            {shops?.map((shop: any) => (
+              <ShopCard key={shop.id} shop={shop} />
+            ))}
+          </div>
+        )}
+
+        {shops?.length === 0 && (
+          <p className='text-center'>Магазини не знайдено</p>
+        )/*}
+
+        {/*<div className='my-8 block'>
+          <SectionTitle title="Кращі пропозиції" />
+        </div>*/}
+
+        {/*!offersLoading && !isError && (
+          <div className='m-auto grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 2xl:grid-cols-5 gap-5'>
+            {offers?.map((offer: any) => (
+              <ProductCard key={offer.id} product={offer} />
+            ))}
+          </div>
+        )}*/}
       </div>
     </div>
   )

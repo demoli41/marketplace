@@ -31,7 +31,7 @@ function HeaderBottom() {
 
 
     return (
-        <div className={`w-full transition-all  bg-white pb-3 duration-300 ${isSticky ? 'fixed top-0 left-0 z-[100 shadow-lg' : 'relative'} `}
+        <div className={`w-full transition-all  bg-white pb-3 duration-300 ${isSticky ? 'fixed top-0 left-0 z-[100] shadow-lg' : 'relative'} `}
         >
             <div className={`w-[80%] relative m-auto flex items-center justify-between 
             ${isSticky ? 'pt-3' : 'py-0'} `}

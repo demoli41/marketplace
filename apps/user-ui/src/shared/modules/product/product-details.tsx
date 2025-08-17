@@ -79,7 +79,7 @@ const ProductDetails = ({ productDetails }:{productDetails: any}) => {
         <div className='w-[90%] bg-white lg:w-[80%] mx-auto pt-6 grid grid-cols-1 lg:grid-cols-[32%_40%_28%] gap-6 overflow-hidden'>
             {/* Left Section */}
             <div className='p-4'>
-                <div className='relative w-full'>
+                <div className=' w-full'>
                     {/*Main image with zoom */}
                     <Image
                       src={currentImage}
@@ -89,7 +89,7 @@ const ProductDetails = ({ productDetails }:{productDetails: any}) => {
                     />
                 </div>
                 {/* Thumbnails */}
-                <div className='relative flex items-center gap-2 mt-4 overflow-hidden'>
+                <div className=' flex items-center gap-2 mt-4 overflow-hidden'>
                     {productDetails?.images?.length > 4 && (
                       <button
                       disabled={currentIndex===0}
@@ -109,7 +109,7 @@ const ProductDetails = ({ productDetails }:{productDetails: any}) => {
                           height={60}
                           className={`cursor-pointer border rounded-lg p-1 ${currentImage === img ? ' border-blue-500' : 'border-gray-300'}`}
                           onClick={() => {
-                            setCurrentImage(img);
+                            setCurrentImage(img?.url);
                             setCurrentIndex(index);
                           }}
                         />
