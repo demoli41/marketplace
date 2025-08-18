@@ -23,7 +23,7 @@ const ShopCard: React.FC<ShopCardProps> = ({ shop }) => {
         {/*Cover */}
         <div className='h-[120px] w-full relative'>
             <Image 
-            src={shop?.coverBanner || ""} 
+            src={shop?.coverBanner || "https://ik.imagekit.io/q6fjhegkp/products/shop-cover-banner.jpg?updatedAt=1755501485355"} 
             alt="Cover" 
             fill
             className='object-cover w-full h-full ' />
@@ -33,7 +33,7 @@ const ShopCard: React.FC<ShopCardProps> = ({ shop }) => {
         <div className='relative flex justify-center -mt-8'>
             <div className='size-16 rounded-full border-4 border-white overflow-hidden shadow-sm bg-white'>
                 <Image 
-                src={shop?.avatar || ""} 
+                src={shop?.avatar || "https://ik.imagekit.io/q6fjhegkp/products/images.png?updatedAt=1749303973003"} 
                 alt={shop?.name || "Avatar"}
                 width={64} 
                 height={64} 
