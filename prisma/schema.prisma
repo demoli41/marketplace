@@ -33,6 +33,8 @@ model users{
 
   userAnalytics userAnalytics[]
 
+  orders orders[]
+
   address address[]
 }
 
@@ -66,6 +68,8 @@ model shops{
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   products products[]
+
+  orders orders[]
 
   productAnalytics productAnalytics[]
 }
@@ -182,6 +186,48 @@ model address {
   isDefault Boolean  @default(false)
   userId    String   @db.ObjectId
   user      users    @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model notifications {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  creatorId String @db.ObjectId
+  receiverId String
+  redirect_link String?
+  title String
+  message String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model orders{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  user users @relation(fields: [userId], references: [id])
+  shopId String @db.ObjectId
+  shop shops @relation(fields: [shopId], references: [id])
+  total Float
+  shippingAddressId String?
+  couponCode String?
+  discountAmount Float?
+  status String
+  deliveryStatus String @default("Ordered")
+  items orderItems[] @relation("OrderItemsRelation")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model orderItems {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  orderId String @db.ObjectId
+  productId String
+  quantity Int
+  price Float
+  selectedOptions Json?
+
+  orders orders @relation(fields: [orderId], references: [id],name:"OrderItemsRelation")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

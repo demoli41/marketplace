@@ -394,7 +394,7 @@ export const createStripeConnectLink = async (req: Request, res: Response, next:
             account = await stripe.accounts.create({
                 type: "express",
                 email: seller?.email,
-                country: "US",
+                country: "GB",
                 capabilities: {
                     card_payments: {
                         requested: true,

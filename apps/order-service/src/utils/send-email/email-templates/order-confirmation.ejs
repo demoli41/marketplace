@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Підтвердження замовлення</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        .cart {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .cart th, .cart td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        .cart th {
+            background: #f0f0f0;
+        }
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            background: #3498db;
+            color: #fff !important;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Дякуємо, <%= name %>!</h2>
+        <p>Ваше замовлення підтверджено. Нижче наведено деталі:</p>
+
+        <table class="cart">
+            <thead>
+                <tr>
+                    <th>Товар</th>
+                    <th>Кількість</th>
+                    <th>Ціна</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cart.forEach(item => { %>
+                    <tr>
+                        <td><%= item.title %></td>
+                        <td><%= item.quantity %></td>
+                        <td><%= item.price %> грн</td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <p class="total">Всього: <%= totalAmount %> грн</p>
+
+        <a href="<%= trackingUrl %>" class="btn">Відстежити замовлення</a>
+
+        <p style="margin-top: 30px; font-size: 14px; color: #777;">
+            Якщо у вас є питання, відповідайте на цей лист — ми будемо раді допомогти.
+        </p>
+    </div>
+</body>
+</html>

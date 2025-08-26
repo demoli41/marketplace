@@ -11,6 +11,7 @@ import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import axiosInstance from 'apps/user-ui/src/utils/axiosInstance';
+import toast from 'react-hot-toast';
 
 const CartPage = () => {
 
@@ -25,8 +26,25 @@ const CartPage = () => {
     const [discountAmount, setDiscountAmount] = useState(0);
     const [couponCode, setCouponCode] = useState('');
     const [selectedAddressId, setSelectedAddressId] = useState('');
-
     const [loading, setLoading] = useState(false);
+
+    const createPaymentSession=async()=>{
+        setLoading(true);
+        try {
+            const res=await axiosInstance.post("/order/api/create-payment-session", {
+                cart,
+                selectedAddressId,
+                coupon:{},
+            }
+        );
+        const sessionId=res.data.sessionId;
+        router.push(`/checkout?sessionId=${sessionId}`);
+        } catch (error) {
+            toast.error("Помилка при створенні сесії оплати");
+        } finally{
+            setLoading(false);
+        }
+    }
 
     const decreaseQuantity = (id: string) => {
         useStore.setState((state: any) => ({
@@ -271,6 +289,7 @@ const CartPage = () => {
                                 </div>
 
                                 <button
+                                    onClick={createPaymentSession}
                                     className='w-full flex items-center justify-center bg-[#2295FF] text-white gap-2 mt-4-4 py-3 rounded-md hover:bg-blue-600 transition-colors'
                                     disabled={loading}
                                 >
