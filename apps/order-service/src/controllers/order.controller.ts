@@ -570,3 +570,58 @@ export const updateOrderStatus = async (req: Request, res: Response, next: NextF
         return next(error);
     }
 }
+
+//Verify coupon code
+export const verifyCouponCode=async (req: any, res: Response,next:NextFunction) => {
+    try {
+        const {couponCode,cart}=req.body;
+
+        if(!couponCode || !cart){
+            return next(new ValidationError("Coupon code and cart are required"));
+        }
+
+        const discount=await prisma.discount_codes.findUnique({
+            where:{ discountCode: couponCode },
+        });
+
+        if(!discount){
+            return next(new ValidationError("Discount not found"));
+        }
+
+        const matchingProduct=cart.find((item:any)=>
+        item.discount_codes?.some((d:any) => d === discount.id)
+        );
+
+        if(!matchingProduct){
+            return res.status(200).json({
+                valid:false,
+                discount:0,
+                discountAmount:0,
+                message:"Купон не підходить для жодного товару в кошику"
+            });
+        }
+
+        let discountAmount=0;
+        const price=matchingProduct.sale_price * matchingProduct.quantity;
+
+        if(discount.discountType === "percentage"){
+            discountAmount=(price * discount.discountValue) / 100;
+        } else if(discount.discountType === "flat"){
+            discountAmount=discount.discountValue;
+        }
+
+        discountAmount=Math.min(discountAmount, price);
+
+        res.status(200).json({
+            valid: true,
+            discount: discount.discountValue,
+            discountAmount:discountAmount.toFixed(2),
+            discountedProductId: matchingProduct.id,
+            discountType: discount.discountType,
+            message: "Купон успішно застосовано"
+        });
+
+    } catch (error) {
+        return next(error);
+    }
+}
