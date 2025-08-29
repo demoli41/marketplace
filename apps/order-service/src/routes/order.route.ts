@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { createPaymentIntent, createPaymentSession, getOrderDetails, getSellerOrders, updateOrderStatus, verifyCouponCode, verifyingPaymentSession } from '../controllers/order.controller';
+import { createPaymentIntent, createPaymentSession, getOrderDetails, getSellerOrders, getUserOrders, updateOrderStatus, verifyCouponCode, verifyingPaymentSession } from '../controllers/order.controller';
 import isAuthenticated from '@packages/middleware/isAuthenticated';
 import { isSeller } from '@packages/middleware/authorizeRoles';
 
@@ -12,6 +12,7 @@ router.get("/get-seller-orders", isAuthenticated,isSeller, getSellerOrders);
 router.get("/get-order-details/:id", isAuthenticated, getOrderDetails);
 router.put("/update-status/:orderId", isAuthenticated, isSeller, updateOrderStatus);
 router.put("/verify-coupon", isAuthenticated, verifyCouponCode);
+router.get("/get-user-orders", isAuthenticated, getUserOrders);
 
 
 export default router;

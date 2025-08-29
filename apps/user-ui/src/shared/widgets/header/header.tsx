@@ -51,7 +51,7 @@ const Header = () => {
                                 </Link>
                                 <Link href={"/login"}>
                                     <span className='block font-medium'>Привіт!</span>
-                                    <span className='font-semibold'>Реєстрація</span>
+                                    <span className='font-semibold'>{isLoading ? "..." : "Реєстрація"}</span>
                                 </Link>
                             </>
                         )

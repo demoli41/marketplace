@@ -1,9 +1,11 @@
 'use client';
-import { useQueryClient } from '@tanstack/react-query';
-import useUser from 'apps/user-ui/src/hooks/useUser';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import useRequireAuth from 'apps/user-ui/src/hooks/useRequiredAuth';
 import QuickActionCard from 'apps/user-ui/src/shared/widgets/header/components/cards/quick-action.card';
 import StatCard from 'apps/user-ui/src/shared/widgets/header/components/cards/stat.card';
+import ChangePassword from 'apps/user-ui/src/shared/widgets/header/components/change-password';
 import ShippingAddressSection from 'apps/user-ui/src/shared/widgets/header/components/shippingAddress';
+import OrdersTable from 'apps/user-ui/src/shared/widgets/header/components/tables/ordes-table';
 import axiosInstance from 'apps/user-ui/src/utils/axiosInstance';
 import { BadgeCheck, Bell, CheckCircle, Clock, Gift, Inbox, Loader2, Lock, LogOut, MapPin, Pencil, PhoneCall, Receipt, Settings, ShoppingBag, Truck, User } from 'lucide-react';
 import Image from 'next/image';
@@ -15,7 +17,20 @@ const Page = () => {
     const router=useRouter();
     const queryClient=useQueryClient();
 
-    const { user,isLoading } = useUser();
+    const { user,isLoading } = useRequireAuth();
+    const {data:orders=[]}=useQuery({
+    queryKey:['user-orders'],
+    queryFn: async ()=>{
+        const res=await axiosInstance.get(`/order/api/get-user-orders`);
+        console.log(res.data);
+        return res.data.orders;
+    },
+});
+
+    const totalOrders=orders.length;
+    const processingOrders=orders.filter((order:any)=>order.status!=="Delivered" && order?.status!=="Cancelled").length;
+    const completedOrders=orders.filter((order:any)=>order.status==="Delivered").length;
+
     const queryTab=searchParams.get("active") || "Профіль";
     const [activeTab, setActiveTab] = useState(queryTab);
 
@@ -53,9 +68,9 @@ const Page = () => {
 
             {/*Profile overview */}
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6'>
-                <StatCard title="Всього замовлень" count={10} Icon={Clock} />
-                <StatCard title="Замовлень в процесі" count={4} Icon={Truck} />
-                <StatCard title="Виконані замовлення" count={5} Icon={CheckCircle} />
+                <StatCard title="Всього замовлень" count={totalOrders} Icon={Clock} />
+                <StatCard title="Замовлень в процесі" count={processingOrders} Icon={Truck} />
+                <StatCard title="Виконані замовлення" count={completedOrders} Icon={CheckCircle} />
             </div>
 
             {/*Sidebar and content layout */}
@@ -125,7 +140,11 @@ const Page = () => {
                         </div>
                     ): activeTab==="Адреса доставки" && !isLoading && user ? (
                         <ShippingAddressSection />
-                    ): <></>}
+                    ): activeTab==="Мої замовлення" ? (
+                        <OrdersTable />
+                    ):activeTab==="Змінити пароль" ? (
+                        <ChangePassword />
+                    ):<></>}
                 </div>
 
                 {/* Right quick panel*/}
