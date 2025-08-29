@@ -85,7 +85,7 @@ const ProductList = () => {
                 },
             },
             {
-                accessorKey: "name",
+                accessorKey: "title",
                 header: "Назва товару",
                 cell: ({ row }: any) => {
                     const truncatedTitle =
@@ -106,7 +106,7 @@ const ProductList = () => {
                 },
             },
             {
-                accessorKey: "price",
+                accessorKey: "sale_price",
                 header: "Ціна",
                 cell: ({ row }: any) => (
                     <span>

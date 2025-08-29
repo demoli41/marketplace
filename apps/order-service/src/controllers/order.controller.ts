@@ -1,4 +1,4 @@
-import { ValidationError } from "@packages/error-handler";
+import { NotFoundError, ValidationError } from "@packages/error-handler";
 import prisma from "@packages/libs/prisma";
 import redis from "@packages/libs/redis";
 import { NextFunction, Request, Response } from "express";
@@ -405,5 +405,168 @@ export const createOrder=async (req: Request, res: Response,next:NextFunction) =
     } catch (error) {
       console.log(error);
       return next(error);
+    }
+}
+
+//Get sellers orders
+export  const getSellerOrders=async (req: any, res: Response,next:NextFunction) => {
+    try {
+        const shop=await prisma.shops.findUnique({
+        where:{
+            sellerId:req.seller.id,
+        },
+    });
+
+    // ferth all orders
+    const orders=await prisma.orders.findMany({
+        where:{
+            shopId:shop?.id,
+        },
+        include:{
+            user:{
+                select:{
+                    id:true,
+                    name:true,
+                    email:true,
+                    avatar:true
+                },
+            },
+        },
+        orderBy:{
+            createdAt:"desc"
+        }
+    });
+
+    res.status(200).json({
+        success:true,
+        orders
+    });
+
+    } catch (error) {
+        return next(error);
+    }
+}
+
+//Get order details
+export const getOrderDetails=async (req: any, res: Response,next:NextFunction) => {
+    try {
+        const orderId = req.params.id;
+
+        const order=await prisma.orders.findUnique({
+            where:{
+                id:orderId
+            },
+            include:{
+                items:true,
+            },
+        });
+
+        if(!order) {
+            return next(new NotFoundError("Order not found"));
+        }
+
+        const shippingAddress = order.shippingAddressId ? await prisma.address.findUnique({
+            where: {
+                id: order?.shippingAddressId
+            },
+        }) : null;
+
+        const coupon=order.couponCode ? await prisma.discount_codes.findUnique({
+            where: {
+                discountCode: order.couponCode
+            }
+        }) : null;
+
+        //fetch all products details in one go
+        const productIds=order.items.map((item) => item.productId);
+
+        const products=await prisma.products.findMany({
+            where:{
+                id:{
+                    in:productIds
+                }
+            },
+            select:{
+                id:true,
+                title:true,
+                images:true,
+            }
+        });
+
+        const productMap=new Map(products.map((p)=>[p.id,p]));
+
+        const items=order.items.map((item) => ({
+            ...item,
+            selectedOptions:item.selectedOptions,
+            product: productMap.get(item.productId) || null,
+        }));
+
+        res.status(200).json({
+            success: true,
+            order: {
+                ...order,
+                items,
+                shippingAddress,
+                couponCode:coupon,
+            },
+        });
+
+    } catch (error) {
+        return next(error);
+    }
+}
+
+//Update order status
+export const updateOrderStatus = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const {orderId}=req.params;
+        const {deliveryStatus}=req.body;
+
+        if(!orderId || !deliveryStatus){
+            return res.status(400)
+            .json({error:"Order ID and delivery status are required"});
+        }
+
+        const allowedStatuses=[
+            "Ordered",
+            "Packed",
+            "Shipped",
+            "Out for Delivery",
+            "Delivered",
+        ];
+
+        if(!allowedStatuses.includes(deliveryStatus)){
+            return res.status(400)
+            .json({error:"Invalid delivery status"});
+        }
+
+        const existingOrder=await prisma.orders.findUnique({
+            where:{
+                id:orderId
+            },
+        });
+
+        if(!existingOrder){
+            return next(new NotFoundError("Order not found"));
+        }
+
+        const updatedOrder=await prisma.orders.update({
+            where:{
+                id:orderId
+            },
+            data:{
+                deliveryStatus,
+                updatedAt:new Date(),
+            },
+        });
+
+        return res.status(200).json({
+            success: true,
+            message:"Order status updated successfully",
+            order: updatedOrder,
+        })
+
+    } catch (error) {
+        return next(error);
     }
 }

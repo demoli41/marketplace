@@ -8,7 +8,7 @@ import Box from '../box';
 import { Sidebar } from './sidebar.styles';
 import Link from 'next/link';
 import SidebarItem from './sidebar.item';
-import { BellPlus, BellRing, CalendarPlus, ListOrdered, LogOut, LogsIcon, Mail, PackageSearch, Settings, SquarePlus, Store, TicketPercent, Wallet2Icon } from 'lucide-react';
+import { BellPlus, BellRing, CalendarPlus, ListOrdered, LogOut, Mail, PackageSearch, Settings, SquarePlus, Store, TicketPercent, Wallet2Icon } from 'lucide-react';
 import SidebarMenu from './sidebar.menu';
 
 
@@ -39,9 +39,8 @@ const SideBarWrapper = () => {
             className='sidebar-wrapper'
         >
             <Sidebar.Header>
-                <Box>
+                <Box className='flex justify-center items-center'>
                     <Link href={'/'} className='flex justify-center text-center gap-2'>
-                        <LogsIcon />
                         <Box className='text-xl font-medium text-[#ecedee]'>
                             <h3>{seller?.shop?.name}</h3>
                             <h5 className='font-medium pl-2 text-xs text-[#ecedeecf] whitespace-nowrap overflow-hidden text-ellipsis max-w-[170px]'>
