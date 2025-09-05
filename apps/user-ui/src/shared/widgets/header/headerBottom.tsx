@@ -1,10 +1,10 @@
 'use client'
 import { navItems } from 'apps/user-ui/src/configs/constants';
-import useUser from 'apps/user-ui/src/hooks/useUser';
 import { useStore } from 'apps/user-ui/src/store';
 import { AlignLeft, ChevronDown, HeartIcon, ShoppingCart, User } from 'lucide-react';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
+import useUser from 'apps/user-ui/src/hooks/useUser';
 
 function HeaderBottom() {
     const [show, setShow] = useState(false);
@@ -49,7 +49,7 @@ function HeaderBottom() {
 
                 {/*Dropdown menu */}
                 {show && (
-                    <div className={`absolute left-0 ${isSticky ? 'top-[70px]' : 'top-[50px]'} rounded-b-[24px] w-[260px] h-[400px] bg-[#f5f5f5] `}>
+                    <div className={`absolute left-0 ${isSticky ? 'top-[70px]' : 'top-[50px]'} flex rounded-b-[24px] w-[260px] h-[400px] bg-[#f5f5f5] `}>
 
                     </div>
                 )}

@@ -1,11 +1,21 @@
-import {create} from "zustand";
+import { create } from "zustand";
 
-type AuthState={
-    isLoggedIn:boolean;
-    setLoggedIn:(value:boolean)=>void;
+type User = {
+  id: string;
+  name: string;
+  email: string;
 };
 
-export const useAuthStore=create<AuthState>((set)=>({
-    isLoggedIn:true,
-    setLoggedIn:(value)=>set({isLoggedIn:value}),
+type AuthState = {
+  isLoggedIn: boolean;
+  user: User | null;
+  setLoggedIn: (value: boolean) => void;
+  setUser: (user: User | null) => void;
+};
+
+export const useAuthStore = create<AuthState>((set) => ({
+  isLoggedIn: false,
+  user: null,
+  setLoggedIn: (value) => set({ isLoggedIn: value }),
+  setUser: (user) => set({ user, isLoggedIn: !!user }),
 }));
