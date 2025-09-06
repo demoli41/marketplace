@@ -656,3 +656,73 @@ export const getUserAddresses=async (req: any, res: Response, next: NextFunction
         next(error);
     }
 };
+
+//Admin login
+export const loginAdmin = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { email, password } = req.body;
+
+        if(!email || !password){
+            return next(new ValidationError("All fields are required."));
+        }
+
+        const user=await prisma.users.findUnique({
+            where:{email},
+        })
+
+        //verify password and email
+        if(!user) return next(new AuthError("User doesn`t exists."));
+
+        const isMatch=await bcrypt.compare(password,user.password!);
+
+        if(!isMatch) return next(new AuthError("Invalid email or password."));
+
+        const isAdmin=user.role==="admin";
+
+        /*if(!isAdmin){
+            sendLog({
+                type:"error",
+                message:`Unauthorized admin login attempt for user with email: ${email}`,
+                source:"auth-service",
+            });
+            return next(new AuthError("Unauthorized. Admins only."));
+        }
+
+        sendLog({
+            type:'success',
+            message:`Admin logged in with email: ${email}`,
+            source:"auth-service",
+        });*/
+
+        res.clearCookie("seller_access_token");
+        res.clearCookie("seller_refresh_token");
+
+        const accessToken= jwt.sign(
+            {id:user.id,role:"admin"},
+            process.env.ACCESS_TOKEN_SECRET as string,
+            {expiresIn:"15m"}
+        )
+
+        const refreshToken= jwt.sign(
+            {id:user.id,role:"admin"},
+            process.env.REFRESH_TOKEN_SECRET as string,
+            {expiresIn:"7d"}
+        );
+
+        setCookie(res,"refresh_token",refreshToken);
+        setCookie(res,"access_token",accessToken);
+
+        res.status(200).json({
+            message: "Admin logged in successfully.",
+            user:{
+                id:user.id,
+                email:user.email,
+                name:user.name,
+            }
+        });
+
+        
+    } catch (error) {
+        return next(error);
+    }
+}

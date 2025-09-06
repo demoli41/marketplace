@@ -10,7 +10,7 @@ import Input from 'packages/components/input/input';
 import RichTextEditor from 'packages/components/rich-text-editor/rich-text-editor';
 import SizeSelector from 'packages/components/size-selector/size-selector';
 import React, { useMemo, useState } from 'react'
-import { Controller, set, useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import Image from 'next/image';
 import { enhancements } from 'apps/seller-ui/src/utils/AI.enhancments';
 import { useRouter } from 'next/navigation';
